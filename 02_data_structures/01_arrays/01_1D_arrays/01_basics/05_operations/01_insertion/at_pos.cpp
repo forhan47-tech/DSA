@@ -14,7 +14,7 @@ int main() {
     arr[pos] = val;
     n++;
 
-    cout << "After insertion at position 2: ";
+    cout << "After insertion: ";
     for(int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }

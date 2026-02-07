@@ -9,7 +9,7 @@ int main() {
     arr[n] = val; // insert at end
     n++;
 
-    cout << "After insertion at end: ";
+    cout << "After insertion: ";
     for(int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
