@@ -2,10 +2,7 @@
 using namespace std;
 
 int main() {
-    int arr[5];    // Declaration only
-
-    arr[0] = 10;   // initialization
-    arr[1] = 20;
+    int arr[5] = {};    // Declaration + initialization
 
     // access
     cout << "arr[0]: " << arr[0] << endl;
