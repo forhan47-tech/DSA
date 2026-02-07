@@ -10,6 +10,7 @@ int main() {
 
     arr[0] = 10;   // initialization
     arr[1] = 20;
+    arr[2] = 30;
 
     // access
     cout << "arr[0]: " << arr[0] << endl;
