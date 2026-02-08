@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    int arr[3][3] = {
+    int mat[3][3] = {
         {1, 2, 3},
         {4, 5, 6},
         {7, 8, 9}
@@ -11,8 +11,8 @@ int main() {
     int r = 1, c = 2;
     int val = 47;
 
-    arr[r][c] = val;
+    mat[r][c] = val;   // update element at [1][2]
     
-    cout << "Updated element: " << arr[1][2] << endl;
+    cout << "Updated element: " << mat[1][2] << endl;
     return 0;
 }

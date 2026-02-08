@@ -7,27 +7,27 @@ int main() {
     cin >> rows >> cols;
 
     // dynamic allocation
-    int** mtx = new int*[rows];
+    int** mat = new int*[rows];
     for (int i = 0; i < rows; i++) {
-        mtx[i] = new int[cols];
+        mat[i] = new int[cols];
     }
 
-    mtx[0][0] = 10; // initialization
-    mtx[0][1] = 20;
-    mtx[1][0] = 30;
-    mtx[1][1] = 40;
+    mat[0][0] = 10; // initialization
+    mat[0][1] = 20;
+    mat[1][0] = 30;
+    mat[1][1] = 40;
 
     // Access
-    cout << "mtx[0][0]: " << mtx[0][0] << endl;
-    cout << "mtx[0][1]: " << mtx[0][1] << endl;
-    cout << "mtx[1][0]: " << mtx[1][0] << endl;
-    cout << "mtx[1][1]: " << mtx[1][1] << endl;
+    cout << "mat[0][0]: " << mat[0][0] << endl;
+    cout << "mat[0][1]: " << mat[0][1] << endl;
+    cout << "mat[1][0]: " << mat[1][0] << endl;
+    cout << "mat[1][1]: " << mat[1][1] << endl;
 
     // Free memory
     for (int i = 0; i < rows; i++) {
-        delete[] mtx[i];  // free each row
+        delete[] mat[i];  // free each row
     }
-    delete[] mtx;         // free row pointers
+    delete[] mat;         // free row pointers
 
     return 0;
 }

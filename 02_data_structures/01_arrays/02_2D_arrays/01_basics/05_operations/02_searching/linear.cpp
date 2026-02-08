@@ -1,28 +1,27 @@
 #include <iostream>
 using namespace std;
 
-bool linearSearch(int mtx[][3], int key) {
-    int r = 2, c = 3;
+bool linearSearch(int mat[][3], int r, int c, int key) {
     for(int i = 0; i < r; i++) {
         for(int j = 0; j < c; j++) {
-            if(mtx[i][j] == key) {
+            if(mat[i][j] == key) {
                 cout << "Element found at row " << i << ", column " << j << endl;
-                return true; // found
+                return true;
             }
         }
     }
-    return false; // not found
+    return false;
 }
 
 int main() {
-    int mtx[2][3] = {
+    int mat[2][3] = {
         {10, 20, 30},
         {40, 50, 60}
     };
 
     int key = 50;
 
-    if(linearSearch(mtx, key)) {
+    if(linearSearch(mat, 2, 3, key)) {
         cout << "Search successful!" << endl;
     } else {
         cout << "Element not found" << endl;

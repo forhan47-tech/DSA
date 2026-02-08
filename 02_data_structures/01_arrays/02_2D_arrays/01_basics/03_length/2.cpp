@@ -2,10 +2,10 @@
 using namespace std;
 
 int main() {
-    int mtx[][2] = { {10, 20}, {30, 40} };
+    int mat[][2] = { {10, 20}, {30, 40} };
 
-    int rows = size(mtx); 
-    int cols = size(mtx[0]); 
+    int rows = size(mat);      // number of rows
+    int cols = size(mat[0]);   // number of columns
 
     cout << "Rows: " << rows << endl;
     cout << "Cols: " << cols << endl;
