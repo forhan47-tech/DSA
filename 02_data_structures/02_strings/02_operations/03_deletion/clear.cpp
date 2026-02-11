@@ -7,7 +7,6 @@ int main() {
 
     // Clear entire string
     s.clear();
-    cout << "After clear: " << (s.empty() ? "String is empty" : s) << endl;
-
+    cout << "After clear: " << s << endl;
     return 0;
 }
