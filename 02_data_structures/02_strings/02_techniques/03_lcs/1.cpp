@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int lcs(const string& X, const string& Y, int m, int n) {
+    if (m == 0 || n == 0) return 0;
+    if (X[m-1] == Y[n-1])
+        return 1 + lcs(X, Y, m-1, n-1);
+    else
+        return max(lcs(X, Y, m-1, n), lcs(X, Y, m, n-1));
+}
+
+int main() {
+    string X = "AGGTAB";
+    string Y = "GXTXAYB";
+    cout << "LCS length: " << lcs(X, Y, X.size(), Y.size()) << endl;
+    return 0;
+}
