@@ -11,6 +11,6 @@ int main() {
 
     s = "Hello World";
     s.shrink_to_fit();
-    cout << "Capacity after reserve: " << s.capacity() << endl;
+    cout << "Capacity after shrink: " << s.capacity() << endl;
     return 0;
 }
