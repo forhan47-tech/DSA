@@ -10,8 +10,8 @@ int main() {
     cout << "Substring: " << sub << endl;
 
     // Extract substring from index 0 to end
-    string sub2 = s.substr(0);
-    cout << "Substring from start: " << sub2 << endl;
+    string substr = s.substr(0);
+    cout << "Substring from start: " << substr << endl;
 
     return 0;
 }

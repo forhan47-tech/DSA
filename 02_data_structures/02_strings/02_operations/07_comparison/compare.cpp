@@ -7,7 +7,7 @@ int main() {
     string s2 = "World";
 
     // Using compare()
-    int result = s1.compare(s2);
+    int result = s1.compare(s2);  
     if (result == 0) 
     cout << "s1 and s2 are equal" << endl;
     else if (result < 0) 
