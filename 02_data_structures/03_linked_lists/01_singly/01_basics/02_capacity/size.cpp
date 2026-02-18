@@ -5,7 +5,7 @@ class Node {
 public:
     int data;
     Node* next;
-    
+
     Node(int val) {
         data = val;
         next = nullptr;
@@ -15,14 +15,25 @@ public:
 class Singly {
     Node* head;
     Node* tail;
+    
 public:
     Singly() {
         head = tail = nullptr;
+    }
+
+    int size() {
+        int count = 0;
+        Node* curr = head;
+        while (curr != nullptr) {
+            count++;
+            curr = curr->next;
+        }
+        return count;
     }
 };
 
 int main() {
     Singly fl;
-    cout << "Singly Linked List created successfully!" << endl;
+    cout << "Size of the list: " << fl.size() << endl;
     return 0;
 }

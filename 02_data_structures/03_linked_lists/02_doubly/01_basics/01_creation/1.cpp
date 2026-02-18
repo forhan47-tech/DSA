@@ -5,24 +5,25 @@ class Node {
 public:
     int data;
     Node* next;
+    Node* prev;
     
     Node(int val) {
         data = val;
-        next = nullptr;
+        next = prev = nullptr;
     }
 };
 
-class Singly {
+class Doubly {
     Node* head;
     Node* tail;
 public:
-    Singly() {
+    Doubly() {
         head = tail = nullptr;
     }
 };
 
 int main() {
-    Singly fl;
-    cout << "Singly Linked List created successfully!" << endl;
+    Doubly dl;
+    cout << "Doubly Linked List created successfully!" << endl;
     return 0;
 }

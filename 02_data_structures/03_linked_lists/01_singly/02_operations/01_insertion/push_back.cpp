@@ -21,15 +21,6 @@ public:
         head = tail = nullptr;
     }
 
-    void traverse() {
-        Node* curr = head;
-        while (curr != nullptr) {
-            cout << curr->data << " ";
-            curr = curr->next;
-        }
-        cout << endl;
-    }
-
     void push_back(int val) {
         Node* newNode = new Node(val);
         if (head == nullptr) {
@@ -48,6 +39,6 @@ int main() {
     fl.push_back(30);
     fl.push_back(40);   
     fl.push_back(50);
-    fl.traverse(); 
+    cout << "Insertion at back completed!" << endl;
     return 0;
 }

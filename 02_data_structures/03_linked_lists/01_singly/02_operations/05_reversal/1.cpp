@@ -19,10 +19,15 @@ public:
     Singly() {
         head = tail = nullptr;
     }
+
+    void reverse() {
+        
+    }
 };
 
 int main() {
     Singly fl;
-    cout << "Singly Linked List created successfully!" << endl;
-    return 0;
+    fl.reverse();
+    cout << "List reversed!" << endl;
+    return 0;  
 }

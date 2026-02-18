@@ -21,24 +21,26 @@ public:
         head = tail = nullptr;
     }
 
-    void push_front(int val) {
-        Node* newNode = new Node(val);
+    void pop_front() {
+        if (head == nullptr) {
+            cout << "List is empty" << endl;
+            return;
+        }
+        
+        Node* temp = head;
+        head = head->next;
+        temp->next = nullptr;
+        delete temp;
 
         if (head == nullptr) {
-            head = tail = newNode;
-        } else {
-            newNode->next = head;
-            head = newNode;
+            tail = nullptr;
         }
     }
 };
 
 int main() {
     Singly fl;
-    fl.push_front(10);
-    fl.push_front(20);  
-    fl.push_front(30);
-    fl.push_front(40);
-    cout << "Insertion at front completed!" << endl;
+    fl.pop_front();
+    cout << "Popped front element!" << endl;
     return 0;
 }

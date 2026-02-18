@@ -19,10 +19,18 @@ public:
     Singly() {
         head = tail = nullptr;
     }
+
+    int front() {
+        if (head == nullptr) {
+            cout << "List is empty" << endl;
+            return -1;
+        }
+        return head->data;
+    }
 };
 
 int main() {
     Singly fl;
-    cout << "Singly Linked List created successfully!" << endl;
-    return 0;
+    cout << "Front element: " << fl.front() << endl;
+    return 0;  
 }

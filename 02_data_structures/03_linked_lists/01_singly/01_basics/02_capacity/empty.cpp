@@ -19,10 +19,14 @@ public:
     Singly() {
         head = tail = nullptr;
     }
+
+    bool empty() {
+        return head == nullptr;
+    }
 };
 
 int main() {
     Singly fl;
-    cout << "Singly Linked List created successfully!" << endl;
-    return 0;
+    cout << "Is the list empty? " << fl.empty() << endl;
+    return 0;  
 }
