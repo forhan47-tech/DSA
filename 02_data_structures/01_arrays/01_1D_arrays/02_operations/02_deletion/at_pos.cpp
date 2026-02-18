@@ -6,8 +6,13 @@ int main() {
     int n = size(arr);
     int pos = 2; // index to delete
 
+    if(pos < 0 || pos >= n) {
+        cout << "Invalid position!";
+        return 0;
+    }
+
     for(int i = pos; i < n-1; i++) {
-        arr[i] = arr[i+1];
+        arr[i] = arr[i+1]; // shift left
     }
     n--;
 

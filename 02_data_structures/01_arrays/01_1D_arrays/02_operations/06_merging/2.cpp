@@ -29,7 +29,7 @@ int main() {
     mergeSorted(A, nA, B, nB, C);
 
     cout << "Merged sorted array: ";
-    for(int i = 0; i < 8; i++) {
+    for(int i = 0; i < nA+nB; i++) {
         cout << C[i] << " ";
     }
 }

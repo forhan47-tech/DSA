@@ -8,6 +8,11 @@ int main() {
     int pos = 2; // index where to insert
     int val = 3;
 
+    if(pos < 0 || pos > n) {
+        cout << "Invalid position!";
+        return 0;
+    }
+
     for(int i = n; i > pos; i--) {
         arr[i] = arr[i-1]; // shift right
     }
