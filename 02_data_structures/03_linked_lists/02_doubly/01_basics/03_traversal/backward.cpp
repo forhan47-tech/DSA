@@ -21,7 +21,7 @@ public:
         head = tail = nullptr;
     }
 
-    void backward() {
+    void traverse_backward() {
         Node* curr = tail;
         while (curr != nullptr) {
             cout << curr->data << " ";
@@ -33,6 +33,6 @@ public:
 
 int main() {
     Doubly dl;
-    dl.backward();
+
     return 0;
 }

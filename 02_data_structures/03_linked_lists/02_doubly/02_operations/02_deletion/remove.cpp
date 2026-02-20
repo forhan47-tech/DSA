@@ -70,7 +70,6 @@ public:
             if (curr->data == val) {
                 Node* temp = curr;
                 curr = curr->next;
-
                 if (temp == head) {
                     pop_front();
                 } else if (temp == tail) {
@@ -91,6 +90,5 @@ public:
 int main() {
     Doubly dl;
     dl.remove(10);
-    cout << "Removed element with value 10!" << endl;
     return 0;
 }

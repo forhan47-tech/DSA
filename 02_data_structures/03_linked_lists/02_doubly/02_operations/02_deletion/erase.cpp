@@ -74,7 +74,7 @@ public:
             return;
         }
 
-        if (pos == size() - 1) {
+        if (pos == size()-1) {
             pop_back();
             return;
         }
@@ -83,7 +83,6 @@ public:
         for (int i = 0; i < pos; i++) {
             curr = curr->next;
         }
-
         curr->prev->next = curr->next;
         curr->next->prev = curr->prev;
         delete curr;
@@ -94,6 +93,5 @@ public:
 int main() {
     Doubly dl;
     dl.erase(0);
-    cout << "Erased element at position 0!" << endl;
     return 0;
 }

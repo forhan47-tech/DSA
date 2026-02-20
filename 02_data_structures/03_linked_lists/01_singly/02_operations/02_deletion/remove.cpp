@@ -74,23 +74,19 @@ public:
                 if (curr == head) {
                     pop_front();
                     curr = head;
-                    prev = nullptr;
-                    continue;
                 } else if (curr == tail) {
                     pop_back();
                     curr = nullptr;
-                    continue;
                 } else {
-                    Node* temp = curr;
                     prev->next = curr->next;
-                    curr = curr->next;
-                    delete temp;
+                    delete curr;
+                    curr = prev->next;
                     count--;
-                    continue;
                 }
+            } else {
+                prev = curr;
+                curr = curr->next;
             }
-            prev = curr;
-            curr = curr->next;
         }
     }
 };

@@ -15,9 +15,15 @@ public:
 class Singly {
     Node* head;
     Node* tail;
+    int count;
 public:
     Singly() {
         head = tail = nullptr;
+        count = 0;
+    }
+
+    ~Singly() {
+        clear();
     }
 
     void clear() {
@@ -28,6 +34,7 @@ public:
             delete temp;
         }
         head = tail = nullptr;
+        count = 0;
     }
 };
 

@@ -15,11 +15,16 @@ public:
 class Circular {
     Node* head;
     Node* tail;
-
+    int count;
 public:
     Circular() {
         head = tail = nullptr;
-    }  
+        count = 0;
+    } 
+    
+    ~Circular() {
+        clear();
+    }
     
     void clear() {
         if (head == nullptr) {
@@ -34,6 +39,7 @@ public:
             delete temp;
         } while (curr != head);
         head = tail = nullptr;
+        count = 0;
     }
 };
 

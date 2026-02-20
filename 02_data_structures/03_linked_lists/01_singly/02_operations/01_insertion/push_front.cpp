@@ -14,8 +14,7 @@ public:
 
 class Singly {
     Node* head;
-    Node* tail;
-    
+    Node* tail; 
 public:
     Singly() {
         head = tail = nullptr;

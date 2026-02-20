@@ -58,10 +58,12 @@ public:
 
         if (pos == 0) {
             push_front(val);
+            return;
         }
         
         if (pos == size()) {
             push_back(val);
+            return;
         }
 
         Node* curr = head;

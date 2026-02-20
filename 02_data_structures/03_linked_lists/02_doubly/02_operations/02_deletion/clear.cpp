@@ -16,9 +16,15 @@ public:
 class Doubly {
     Node* head;
     Node* tail;
+    int count;
 public:
     Doubly() {
         head = tail = nullptr;
+        count = 0;
+    }
+
+    ~Doubly() {
+        clear();
     }
 
     void clear() {
@@ -29,6 +35,7 @@ public:
             delete temp;
         }
         head = tail = nullptr;
+        count = 0;
     }
 };
 

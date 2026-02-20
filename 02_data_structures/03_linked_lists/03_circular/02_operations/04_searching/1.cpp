@@ -15,7 +15,6 @@ public:
 class Circular {
     Node* head;
     Node* tail;
-
 public:
     Circular() {
         head = tail = nullptr;

@@ -25,6 +25,7 @@ public:
         Node* curr = head;
         Node* next = nullptr;
 
+        tail = head;
         while (curr != nullptr) {
             next = curr->next; 
             curr->next = prev; 
@@ -32,7 +33,7 @@ public:
             curr = next;       
         }
 
-        swap(head, tail);
+        head = prev;
     }
 };
 

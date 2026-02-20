@@ -14,8 +14,7 @@ public:
 
 class Singly {
     Node* head;
-    Node* tail;
-    
+    Node* tail;  
 public:
     Singly() {
         head = tail = nullptr;
@@ -35,6 +34,7 @@ public:
             while (curr->next != tail) {
                 curr = curr->next;
             }
+
             curr->next = nullptr;
             delete tail;
             tail = curr;

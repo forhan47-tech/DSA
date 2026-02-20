@@ -76,7 +76,7 @@ public:
             return;
         }
 
-        if (pos == size() - 1) {
+        if (pos == size()-1) {
             pop_back();
             return;
         }

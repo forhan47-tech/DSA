@@ -15,7 +15,6 @@ public:
 class Singly {
     Node* head;
     Node* tail;
-    
 public:
     Singly() {
         head = tail = nullptr;

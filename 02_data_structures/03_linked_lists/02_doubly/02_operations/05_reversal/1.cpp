@@ -31,6 +31,15 @@ public:
             curr->next = temp;
             curr = curr->prev;
         }
+
+        if (temp != nullptr) {
+            head = temp->prev;
+        }
+
+        tail = head;
+        while (tail != nullptr && tail->next != nullptr) {
+            tail = tail->next;
+        }
     }
 };
 

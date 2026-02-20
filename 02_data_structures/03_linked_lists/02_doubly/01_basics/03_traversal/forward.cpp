@@ -21,7 +21,7 @@ public:
         head = tail = nullptr;
     }
 
-    void forward() {
+    void traverse_forward() {
         Node* curr = head;
         while (curr != nullptr) {
             cout << curr->data << " ";
@@ -33,6 +33,6 @@ public:
 
 int main() {
     Doubly dl;
-    dl.forward();
+    dl.traverse_forward();
     return 0;
 }
