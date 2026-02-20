@@ -2,14 +2,14 @@
 using namespace std;
 
 int main() {
-    int rows, cols;
+    int r, c;
     cout << "Enter rows and cols: ";
-    cin >> rows >> cols;
+    cin >> r >> c;
 
     // dynamic allocation
-    int** mat = new int*[rows];
-    for (int i = 0; i < rows; i++) {
-        mat[i] = new int[cols];
+    int** mat = new int*[r];
+    for (int i = 0; i < r; i++) {
+        mat[i] = new int[c];
     }
 
     mat[0][0] = 10; // initialization
@@ -24,7 +24,7 @@ int main() {
     cout << "mat[1][1]: " << mat[1][1] << endl;
 
     // Free memory
-    for (int i = 0; i < rows; i++) {
+    for (int i = 0; i < r; i++) {
         delete[] mat[i];  // free each row
     }
     delete[] mat;         // free row pointers

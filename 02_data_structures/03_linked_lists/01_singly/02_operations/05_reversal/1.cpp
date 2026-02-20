@@ -21,13 +21,24 @@ public:
     }
 
     void reverse() {
-        
+        Node* prev = nullptr;
+        Node* curr = head;
+        Node* next = nullptr;
+
+        while (curr != nullptr) {
+            next = curr->next; 
+            curr->next = prev; 
+            prev = curr;       
+            curr = next;       
+        }
+
+        swap(head, tail);
     }
 };
 
 int main() {
-    Singly fl;
-    fl.reverse();
+    Singly sl;
+    sl.reverse();
     cout << "List reversed!" << endl;
     return 0;  
 }

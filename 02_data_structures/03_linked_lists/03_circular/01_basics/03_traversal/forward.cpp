@@ -12,27 +12,32 @@ public:
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
-    
+
 public:
-    Singly() {
+    Circular() {
         head = tail = nullptr;
-    }
+    }   
 
     void traverse() {
+        if (head == nullptr) {
+            cout << "List is empty!" << endl;
+            return;
+        }
+
         Node* curr = head;
-        while (curr != nullptr) {
+        do {
             cout << curr->data << " ";
             curr = curr->next;
-        }
+        } while (curr != head);
         cout << endl;
     }
 };
 
 int main() {
-    Singly sl;
-    sl.traverse(); 
+    Circular cl;
+    cl.traverse();
     return 0;
 }

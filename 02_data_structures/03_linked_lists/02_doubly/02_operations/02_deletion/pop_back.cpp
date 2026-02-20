@@ -27,15 +27,15 @@ public:
             return;
         }
 
-        Node* temp = tail;
-        tail = tail->prev;
-
-        if(tail != nullptr) {
-            tail->next = nullptr;
+        if(head == tail) {
+            delete tail;
+            head = tail = nullptr;
         } else {
-            head = nullptr;
+            Node* temp = tail;
+            tail = tail->prev;
+            tail->next = nullptr;
+            delete temp;
         }
-        delete temp;
     }
 };
 

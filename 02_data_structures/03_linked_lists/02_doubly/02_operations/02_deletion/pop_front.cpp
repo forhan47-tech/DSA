@@ -23,20 +23,19 @@ public:
 
     void pop_front() {
         if (head == nullptr) {
-            cout << "List is empty" << endl;
+            cout << "List is empty!" << endl;
             return;
         }
-        
-        Node* temp = head;
-        head = head->next;
 
-        if (head != nullptr) {
-            head->prev = nullptr;
+       if (head == tail) {
+            delete head;
+            head = tail = nullptr;
         } else {
-            tail = nullptr;
+            Node* temp = head;
+            head = head->next;
+            head->prev = nullptr;
+            delete temp;
         }
-
-        delete temp;
     }
 };
 

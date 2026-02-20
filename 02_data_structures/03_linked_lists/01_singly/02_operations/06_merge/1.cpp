@@ -38,9 +38,8 @@ public:
 };
 
 int main() {
-    Singly fl1;
-    Singly fl2;
-    fl1.merge(fl2);
+    Singly sl1, sl2;
+    sl1.merge(sl2);
     cout << "Lists merged!" << endl;
     return 0;  
 }

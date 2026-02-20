@@ -5,19 +5,20 @@ class Node {
 public:
     int data;
     Node* next;
+    Node* prev;
     
     Node(int val) {
         data = val;
-        next = nullptr;
+        next = prev = nullptr;
     }
 };
 
-class Singly {
+class Doubly {
     Node* head;
     Node* tail;
     int count;
 public:
-    Singly() {
+    Doubly() {
         head = tail = nullptr;
         count = 0;
     }
@@ -28,38 +29,36 @@ public:
 
     void pop_front() {
         if (head == nullptr) {
-            cout << "List is empty" << endl;
+            cout << "List is empty!" << endl;
             return;
         }
 
-        if (head == tail) {
+       if (head == tail) {
             delete head;
             head = tail = nullptr;
         } else {
             Node* temp = head;
             head = head->next;
+            head->prev = nullptr;
             delete temp;
         }
         count--;
     }
 
     void pop_back() {
-        if (head == nullptr) {
+        if(tail == nullptr) {
             cout << "List is empty" << endl;
             return;
         }
 
-        if (head == tail) {
-            delete head;
+        if(head == tail) {
+            delete tail;
             head = tail = nullptr;
         } else {
-            Node* curr = head;
-            while (curr->next != tail) {
-                curr = curr->next;
-            }
-            curr->next = nullptr;
-            delete tail;
-            tail = curr;
+            Node* temp = tail;
+            tail = tail->prev;
+            tail->next = nullptr;
+            delete temp;
         }
         count--;
     }
@@ -75,25 +74,26 @@ public:
             return;
         }
 
-        if (pos == size()-1) {
+        if (pos == size() - 1) {
             pop_back();
             return;
         }
-        
+
         Node* curr = head;
-        for (int i = 0; i < pos - 1; i++) {
+        for (int i = 0; i < pos; i++) {
             curr = curr->next;
         }
 
-        Node* temp = curr->next;
-        curr->next = temp->next;
-        delete temp;
+        curr->prev->next = curr->next;
+        curr->next->prev = curr->prev;
+        delete curr;
         count--;
-    }   
+    }
 };
 
 int main() {
-    Singly fl;
-    fl.erase(0);
-    return 0;  
+    Doubly dl;
+    dl.erase(0);
+    cout << "Erased element at position 0!" << endl;
+    return 0;
 }

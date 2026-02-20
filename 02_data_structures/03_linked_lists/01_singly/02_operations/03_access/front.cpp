@@ -30,7 +30,7 @@ public:
 };
 
 int main() {
-    Singly fl;
-    cout << "Front element: " << fl.front() << endl;
+    Singly sl;
+    cout << "Front element: " << sl.front() << endl;
     return 0;  
 }

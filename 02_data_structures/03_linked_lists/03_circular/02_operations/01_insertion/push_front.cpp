@@ -12,34 +12,34 @@ public:
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
-    
-public:
-    Singly() {
-        head = tail = nullptr;
-    }
 
-    void push_back(int val) {
+public:
+    Circular() {
+        head = tail = nullptr;
+    }   
+
+    void push_front(int val) {
         Node* newNode = new Node(val);
-        
+
         if (head == nullptr) {
             head = tail = newNode;
+            tail->next = head;
         } else {
-            tail->next = newNode;
-            tail = newNode;
+            newNode->next = head; 
+            head = newNode;
+            tail->next = head;
         }
     }
 };
 
 int main() {
-    Singly sl;
-    sl.push_back(10);
-    sl.push_back(20);
-    sl.push_back(30);
-    sl.push_back(40);   
-    sl.push_back(50);
-    cout << "Insertion at back completed!" << endl;
+    Circular cl;
+    cl.push_front(10);
+    cl.push_front(20);
+    cl.push_front(30);
+    cout << "Elements inserted at the front of the circular list!" << endl;
     return 0;
 }

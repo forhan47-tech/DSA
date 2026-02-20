@@ -26,21 +26,21 @@ public:
             cout << "List is empty" << endl;
             return;
         }
-        
-        Node* temp = head;
-        head = head->next;
-        temp->next = nullptr;
-        delete temp;
 
-        if (head == nullptr) {
-            tail = nullptr;
+        if(head == tail) {
+            delete head;
+            head = tail = nullptr;
+        } else {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
         }
     }
 };
 
 int main() {
-    Singly fl;
-    fl.pop_front();
+    Singly sl;
+    sl.pop_front();
     cout << "Popped front element!" << endl;
     return 0;
 }

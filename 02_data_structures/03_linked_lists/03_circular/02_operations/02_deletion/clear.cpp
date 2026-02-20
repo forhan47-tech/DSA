@@ -5,35 +5,41 @@ class Node {
 public:
     int data;
     Node* next;
-    
+
     Node(int val) {
         data = val;
         next = nullptr;
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
-public:
-    Singly() {
-        head = tail = nullptr;
-    }
 
+public:
+    Circular() {
+        head = tail = nullptr;
+    }  
+    
     void clear() {
+        if (head == nullptr) {
+            cout << "List is already empty!" << endl;
+            return;
+        }
+
         Node* curr = head;
-        while (curr != nullptr) {
+        do {
             Node* temp = curr;
             curr = curr->next;
             delete temp;
-        }
+        } while (curr != head);
         head = tail = nullptr;
     }
 };
 
 int main() {
-    Singly fl;
-    fl.clear();
-    cout << "List cleared!" << endl;
-    return 0;  
+    Circular cl;
+    cl.clear();
+    cout << "Cleared the circular list!" << endl;
+    return 0;
 }

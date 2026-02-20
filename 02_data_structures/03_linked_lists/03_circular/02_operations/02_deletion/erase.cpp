@@ -5,35 +5,40 @@ class Node {
 public:
     int data;
     Node* next;
-    
+
     Node(int val) {
         data = val;
         next = nullptr;
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
     int count;
 public:
-    Singly() {
+    Circular() {
         head = tail = nullptr;
         count = 0;
+    }  
+
+    int size() {
+        return count;
     }
 
     void pop_front() {
         if (head == nullptr) {
-            cout << "List is empty" << endl;
+            cout << "List is empty!" << endl;
             return;
         }
 
-        if (head == tail) {
+        if(head == tail) {
             delete head;
             head = tail = nullptr;
         } else {
             Node* temp = head;
             head = head->next;
+            tail->next = head;
             delete temp;
         }
         count--;
@@ -41,7 +46,7 @@ public:
 
     void pop_back() {
         if (head == nullptr) {
-            cout << "List is empty" << endl;
+            cout << "List is empty!" << endl;
             return;
         }
 
@@ -53,50 +58,44 @@ public:
             while (curr->next != tail) {
                 curr = curr->next;
             }
-            curr->next = nullptr;
+            curr->next = head;
             delete tail;
             tail = curr;
         }
         count--;
     }
-
-    void remove(int val) {
-        if (head == nullptr) {
-            cout << "List is empty" << endl;
+    
+    void erase(int pos) {
+        if (pos < 0 || pos >= size()) {
+            cout << "Position out of bounds" << endl;
             return;
         }
-        
-        Node* curr = head;
-        Node* prev = nullptr;
 
-        while (curr != nullptr) {
-            if (curr->data == val) {
-                if (curr == head) {
-                    pop_front();
-                    curr = head;
-                    prev = nullptr;
-                    continue;
-                } else if (curr == tail) {
-                    pop_back();
-                    curr = nullptr;
-                    continue;
-                } else {
-                    Node* temp = curr;
-                    prev->next = curr->next;
-                    curr = curr->next;
-                    delete temp;
-                    count--;
-                    continue;
-                }
-            }
-            prev = curr;
+        if (pos == 0) {
+            pop_front();
+            return;
+        }
+
+        if (pos == size() - 1) {
+            pop_back();
+            return;
+        }
+
+        Node* curr = head;
+        for (int i = 0; i < pos - 1; i++) {
             curr = curr->next;
         }
+        
+        Node* temp = curr->next;
+        curr->next = temp->next;
+        delete temp;
+        count--;
     }
 };
 
 int main() {
-    Singly fl;
-    fl.remove(10);
-    return 0;  
+    Circular cl;
+    cl.erase(0);
+    cout << "Erased element at position 0!" << endl;
+    return 0;
 }

@@ -5,28 +5,29 @@ class Node {
 public:
     int data;
     Node* next;
-    
+
     Node(int val) {
         data = val;
         next = nullptr;
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
-public:
-    Singly() {
-        head = tail = nullptr;
-    }
 
+public:
+    Circular() {
+        head = tail = nullptr;
+    } 
+    
     bool empty() {
         return head == nullptr;
     }
 };
 
 int main() {
-    Singly sl;
-    cout << "Is the list empty? " << sl.empty() << endl;
-    return 0;  
+    Circular cl;
+    cout << "Is the circular list empty? " << (cl.empty() ? "Yes" : "No") << endl;
+    return 0;
 }

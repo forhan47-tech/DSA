@@ -5,28 +5,25 @@ class Node {
 public:
     int data;
     Node* next;
-    
+
     Node(int val) {
         data = val;
         next = nullptr;
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
-public:
-    Singly() {
-        head = tail = nullptr;
-    }
 
-    bool empty() {
-        return head == nullptr;
-    }
+public:
+    Circular() {
+        head = tail = nullptr;
+    }   
 };
 
 int main() {
-    Singly sl;
-    cout << "Is the list empty? " << sl.empty() << endl;
-    return 0;  
+    Circular cl;
+    cout << "Circular Linked List created successfully!" << endl;
+    return 0;
 }

@@ -5,34 +5,36 @@ class Node {
 public:
     int data;
     Node* next;
-
+    Node* prev;
+    
     Node(int val) {
         data = val;
-        next = nullptr;
+        next = prev = nullptr;
     }
 };
 
-class Singly {
+class Doubly {
     Node* head;
     Node* tail;
-    
 public:
-    Singly() {
+    Doubly() {
         head = tail = nullptr;
     }
 
-    void traverse() {
+    void clear() {
         Node* curr = head;
         while (curr != nullptr) {
-            cout << curr->data << " ";
+            Node* temp = curr;
             curr = curr->next;
+            delete temp;
         }
-        cout << endl;
+        head = tail = nullptr;
     }
 };
 
 int main() {
-    Singly sl;
-    sl.traverse(); 
+    Doubly dl;
+    dl.clear();
+    cout << "Cleared the list!" << endl;
     return 0;
 }

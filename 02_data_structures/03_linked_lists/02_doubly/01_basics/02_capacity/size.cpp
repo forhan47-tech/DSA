@@ -28,7 +28,7 @@ public:
             count++;
             curr = curr->next;
         }
-        return count;
+        return count;   
     }
 };
 

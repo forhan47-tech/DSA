@@ -12,15 +12,15 @@ public:
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
     int count;
 public:
-    Singly() {
+    Circular() {
         head = tail = nullptr;
         count = 0;
-    } 
+    }
 
     int size() {
         return count;
@@ -28,24 +28,28 @@ public:
 
     void push_front(int val) {
         Node* newNode = new Node(val);
-        
+
         if (head == nullptr) {
             head = tail = newNode;
+            tail->next = head;
         } else {
             newNode->next = head;
             head = newNode;
+            tail->next = head;
         }
         count++;
     }
 
     void push_back(int val) {
         Node* newNode = new Node(val);
-        
+
         if (head == nullptr) {
             head = tail = newNode;
+            tail->next = head;
         } else {
             tail->next = newNode;
             tail = newNode;
+            tail->next = head;
         }
         count++;
     }
@@ -58,10 +62,12 @@ public:
 
         if (pos == 0) {
             push_front(val);
+            return;
         }
-        
+
         if (pos == size()) {
             push_back(val);
+            return;
         }
 
         Node* curr = head;
@@ -77,9 +83,11 @@ public:
 };
 
 int main() {
-    Singly sl;
-    sl.insert(10, 0); 
-    sl.insert(20, 1);
-    sl.insert(15, 1); 
+    Circular cl;
+    cl.insert(10, 0);
+    cl.insert(20, 1);
+    cl.insert(30, 2);
+    cl.insert(15, 1);
+    cout << "Insertion at specific positions in circular list completed!" << endl;
     return 0;
 }

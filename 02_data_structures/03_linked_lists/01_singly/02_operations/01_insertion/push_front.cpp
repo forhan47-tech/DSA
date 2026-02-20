@@ -23,7 +23,7 @@ public:
 
     void push_front(int val) {
         Node* newNode = new Node(val);
-
+        
         if (head == nullptr) {
             head = tail = newNode;
         } else {
@@ -34,11 +34,11 @@ public:
 };
 
 int main() {
-    Singly fl;
-    fl.push_front(10);
-    fl.push_front(20);  
-    fl.push_front(30);
-    fl.push_front(40);
+    Singly sl;
+    sl.push_front(10);
+    sl.push_front(20);  
+    sl.push_front(30);
+    sl.push_front(40);
     cout << "Insertion at front completed!" << endl;
     return 0;
 }

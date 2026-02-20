@@ -33,7 +33,7 @@ public:
 };
 
 int main() {
-    Singly fl;
-    cout << "Size of the list: " << fl.size() << endl;
+    Singly sl;
+    cout << "Size of the list: " << sl.size() << endl;
     return 0;
 }

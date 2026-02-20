@@ -12,22 +12,22 @@ public:
     }
 };
 
-class Singly {
+class Circular {
     Node* head;
     Node* tail;
-    
-public:
-    Singly() {
-        head = tail = nullptr;
-    }
 
+public:
+    Circular() {
+        head = tail = nullptr;
+    } 
+    
     void pop_back() {
         if (head == nullptr) {
-            cout << "List is empty" << endl;
+            cout << "List is empty!" << endl;
             return;
         }
 
-        if (head == tail) {
+        if(head == tail) {
             delete head;
             head = tail = nullptr;
         } else {
@@ -35,7 +35,7 @@ public:
             while (curr->next != tail) {
                 curr = curr->next;
             }
-            curr->next = nullptr;
+            curr->next = head;
             delete tail;
             tail = curr;
         }
@@ -43,8 +43,8 @@ public:
 };
 
 int main() {
-    Singly sl;
-    sl.pop_back();
+    Circular cl;
+    cl.pop_back();
     cout << "Popped back element!" << endl;
     return 0;
 }

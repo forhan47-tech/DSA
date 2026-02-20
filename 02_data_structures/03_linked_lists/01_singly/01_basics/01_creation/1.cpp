@@ -22,7 +22,7 @@ public:
 };
 
 int main() {
-    Singly fl;
+    Singly sl;
     cout << "Singly Linked List created successfully!" << endl;
     return 0;
 }
