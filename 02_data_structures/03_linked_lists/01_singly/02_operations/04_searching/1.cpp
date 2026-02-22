@@ -23,6 +23,7 @@ public:
     int search(int key) {
         Node* curr = head;
         int pos = 0;
+        
         while (curr != nullptr) {
             if (curr->data == key) {
                 return pos;

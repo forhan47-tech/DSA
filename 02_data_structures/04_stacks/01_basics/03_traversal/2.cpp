@@ -31,10 +31,10 @@ public:
         } 
         
         cout << "Stack elements (top to bottom): "; 
-        Node* temp = top; 
-        while (temp != nullptr) { 
-            cout << temp->data << " "; 
-            temp = temp->next; 
+        Node* curr = top; 
+        while (curr != nullptr) { 
+            cout << curr->data << " "; 
+            curr = curr->next; 
         } 
         cout << endl; 
     }

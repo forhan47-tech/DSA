@@ -3,12 +3,12 @@ using namespace std;
 
 class SimpleQueue {
     int *arr;
-    int front, rear, capacity;
+    int front, rear, cap;
 
 public:
     SimpleQueue(int size) {
-        capacity = size;
-        arr = new int[capacity];
+        cap = size;
+        arr = new int[cap];
         front = 0;
         rear = -1;
     }
@@ -36,5 +36,5 @@ public:
 };
 
 int main() {
-    SimpleQueue q(5);
+    SimpleQueue sq(5);
 }

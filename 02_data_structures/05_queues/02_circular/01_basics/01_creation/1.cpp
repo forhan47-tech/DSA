@@ -3,12 +3,12 @@ using namespace std;
 
 class CircularQueue {
     int *arr;
-    int front, rear, capacity;
+    int front, rear, cap;
 
 public:
     CircularQueue(int size) {
-        capacity = size;
-        arr = new int[capacity];
+        cap = size;
+        arr = new int[cap];
         front = 0;
         rear = -1;
     }

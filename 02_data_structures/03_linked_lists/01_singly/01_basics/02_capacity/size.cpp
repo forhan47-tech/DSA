@@ -23,6 +23,7 @@ public:
     int size() {
         int count = 0;
         Node* curr = head;
+        
         while (curr != nullptr) {
             count++;
             curr = curr->next;

@@ -31,10 +31,10 @@ public:
             head = tail = nullptr;
         } else {
             Node* curr = head;
+
             while (curr->next != tail) {
                 curr = curr->next;
             }
-
             curr->next = nullptr;
             delete tail;
             tail = curr;

@@ -29,7 +29,6 @@ public:
             cout << "Stack is empty!\n"; 
             return -1; 
         } 
-
         return top->data; 
     }
 };

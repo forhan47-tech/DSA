@@ -3,12 +3,12 @@ using namespace std;
 
 class CircularQueue {
     int *arr;
-    int front, rear, capacity;
+    int front, rear, cap;
 
 public:
     CircularQueue(int size) {
-        capacity = size;
-        arr = new int[capacity];
+        cap = size;
+        arr = new int[cap];
         front = 0;
         rear = -1;
     }
@@ -31,7 +31,7 @@ public:
         while (true) {
             cout << arr[i] << " ";
             if (i == rear) break;
-            i = (i + 1) % capacity;
+            i = (i + 1) % cap;
         }
         cout << endl;
     }

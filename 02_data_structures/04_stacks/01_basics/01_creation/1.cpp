@@ -4,12 +4,12 @@ using namespace std;
 class Stack {
     int *arr;
     int top;
-    int capacity;
+    int cap;
 
 public:
     Stack(int size) {
-        capacity = size;
-        arr = new int[capacity];
+        cap = size;
+        arr = new int[cap];
         top = -1;
     }
 
