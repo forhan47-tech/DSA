@@ -14,6 +14,12 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+    void clear() {
+        for (auto& lst : adj) {
+            lst.clear();
+        }
+    }
 };
 
 int main() {

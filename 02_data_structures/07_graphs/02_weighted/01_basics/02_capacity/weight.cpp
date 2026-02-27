@@ -14,6 +14,15 @@ public:
         isDirected = directed; 
         adj.resize(V);
     }
+
+    int getWeight(int u, int v) const {
+        for (auto [neighbor, weight] : adj[u]) {
+            if (neighbor == v) {
+                return weight;
+            }
+        }
+        return -1;
+    }
 };
 
 int main() {

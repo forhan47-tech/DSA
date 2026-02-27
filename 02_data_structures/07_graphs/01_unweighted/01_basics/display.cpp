@@ -14,6 +14,17 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+     void printGraph() const {
+        cout << (isDirected ? "Directed Graph\n" : "Undirected Graph\n");
+        for (int i = 0; i < V; i++) {
+            cout << "Vertex " << i << ": ";
+            for (int nbr : adj[i]) {
+                cout << nbr << " ";
+            }
+            cout << endl;
+        }
+    }
 };
 
 int main() {

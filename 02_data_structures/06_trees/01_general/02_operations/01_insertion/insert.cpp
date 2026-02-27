@@ -40,7 +40,7 @@ public:
         if (!root) {
             root = new Node(pval);
             root->child.push_back(new Node(cval));
-        } else { 
+        } else {  
             buildTree(root, pval, cval);
         }
     }

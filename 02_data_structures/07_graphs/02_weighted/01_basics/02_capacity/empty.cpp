@@ -14,6 +14,10 @@ public:
         isDirected = directed; 
         adj.resize(V);
     }
+
+    bool empty() const { 
+        return V == 0; 
+    }
 };
 
 int main() {

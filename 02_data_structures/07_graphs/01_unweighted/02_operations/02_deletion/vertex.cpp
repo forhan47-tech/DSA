@@ -14,6 +14,17 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+    void removeVertex(int u) {
+        if (u >= V) {
+            return;
+        }
+
+        for (int i = 0; i < V; i++) {
+            adj[i].remove(u);
+        }
+        adj[u].clear();
+    }
 };
 
 int main() {

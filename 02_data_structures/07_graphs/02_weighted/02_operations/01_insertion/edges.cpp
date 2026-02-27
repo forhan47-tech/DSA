@@ -14,6 +14,18 @@ public:
         isDirected = directed; 
         adj.resize(V);
     }
+
+
+    void addEdge(int u, int v, int w) {
+        if (u >= V || v >= V) {
+            cout << "Invalid vertex index\n";
+            return;
+        }
+        adj[u].push_back({v, w});
+        if (!isDirected) {
+            adj[v].push_back({u, w});
+        }
+    }
 };
 
 int main() {

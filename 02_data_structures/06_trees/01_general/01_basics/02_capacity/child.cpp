@@ -15,24 +15,20 @@ public:
 class GeneralTree {
     Node* root;
 
-    void freeTree(Node* curr) { 
+    int findChild(Node* curr) const {
         if (!curr) {
-            return; 
+            return 0;
         }
-        
-        for (Node* ch : curr->child) { 
-            freeTree(ch);
-        } 
-        delete curr; 
+        return curr->child.size();
     }
 
 public:
     GeneralTree() {
         root = nullptr;
     }
-
-    void clear() {
-        freeTree(root);
+    
+    int child() { 
+        return findChild(root); 
     }
 };
 

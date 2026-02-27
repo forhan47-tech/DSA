@@ -14,6 +14,15 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+
+    int countEdges() const {
+        int total = 0;
+        for (int i = 0; i < V; i++) {
+            total += adj[i].size();
+        }
+        return isDirected ? total : total / 2;
+    }
 };
 
 int main() {

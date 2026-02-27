@@ -14,6 +14,17 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+    void removeEdge(int u, int v) {
+         if (u >= V || v >= V) {
+            return;
+         }
+         
+        adj[u].remove(v);
+        if (!isDirected) {
+            adj[v].remove(u);
+        }
+    }
 };
 
 int main() {

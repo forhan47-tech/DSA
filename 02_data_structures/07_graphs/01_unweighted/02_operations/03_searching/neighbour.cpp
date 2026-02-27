@@ -14,6 +14,10 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+    const list<int>& neighbors(int u) const {
+        return adj[u];
+    }
 };
 
 int main() {

@@ -14,6 +14,10 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+    bool hasEdge(int u, int v) const {
+        return find(adj[u].begin(), adj[u].end(), v) != adj[u].end();
+    }
 };
 
 int main() {

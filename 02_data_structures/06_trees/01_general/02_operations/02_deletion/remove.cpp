@@ -24,20 +24,21 @@ class GeneralTree {
 
         for (auto ch : curr->child) {
             if (ch->data == key) {
-                freeSubtree(ch);   // delete entire subtree
+                freeSubtree(ch); 
                 deleted = true;
             } else {
-                newChild.push_back(ch); // keep child
-                if (freeChild(ch, key)) 
+                newChild.push_back(ch); 
+                if (freeChild(ch, key)) {
                     deleted = true;
+                }
             }
         }
 
-        curr->child = newChild; // replace children list
+        curr->child = newChild; 
         return deleted;
     }
 
-    // Free memory of a subtree
+
     void freeSubtree(Node* curr) {
         if (!curr) 
             return;
@@ -55,8 +56,9 @@ public:
     }
 
     void remove(int key) {
-        if (!root) 
+        if (!root) {
             return;
+        }
 
         if (root->data == key) {
             freeSubtree(root);

@@ -15,15 +15,20 @@ public:
 class GeneralTree {
     Node* root;
 
-    void freeTree(Node* curr) { 
+    int countLeaves(Node* curr) const {
         if (!curr) {
-            return; 
+            return 0;
         }
-        
-        for (Node* ch : curr->child) { 
-            freeTree(ch);
-        } 
-        delete curr; 
+
+        if (curr->child.empty()) {
+            return 1;
+        }
+
+        int total = 0;
+        for (auto ch : curr->child) {
+            total += countLeaves(ch);
+        }
+        return total;
     }
 
 public:
@@ -31,8 +36,8 @@ public:
         root = nullptr;
     }
 
-    void clear() {
-        freeTree(root);
+    int leaves() { 
+        return countLeaves(root); 
     }
 };
 

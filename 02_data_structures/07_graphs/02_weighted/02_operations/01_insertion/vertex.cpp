@@ -14,6 +14,12 @@ public:
         isDirected = directed; 
         adj.resize(V);
     }
+
+
+    int addVertex() {
+        adj.push_back(list<pair<int,int>>());
+        return V++;
+    }
 };
 
 int main() {

@@ -14,6 +14,10 @@ public:
         isDirected = directed;
         adj.resize(V);
     }
+
+    int countVertices() const { 
+        return V; 
+    }
 };
 
 int main() {
