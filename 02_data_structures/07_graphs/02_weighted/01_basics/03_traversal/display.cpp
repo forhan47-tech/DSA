@@ -3,24 +3,30 @@
 #include <list>
 using namespace std;
 
+class Edge {
+public:
+    int dest;
+    int weight;
+};
+
 class WeightedGraph {
-    int V; 
+    int V;
     bool isDirected;
-    vector<list<pair<int,int>>> adj;
+    vector<list<Edge>> adj;
 
 public:
     WeightedGraph(int V = 0, bool directed = false) {
         this->V = V; 
-        isDirected = directed; 
+        isDirected = directed;
         adj.resize(V);
     }
 
-     void printGraph() const {
+    void printGraph() const {
         cout << (isDirected ? "Directed Weighted Graph\n" : "Undirected Weighted Graph\n");
         for (int i = 0; i < V; i++) {
             cout << "Vertex " << i << ": ";
-            for (auto [nbr, weight] : adj[i]) {
-                cout << "(" << nbr << ", w=" << weight << ") ";
+            for (auto &edge : adj[i]) {
+                cout << "(" << edge.dest << ", w=" << edge.weight << ") ";
             }
             cout << endl;
         }
@@ -28,5 +34,5 @@ public:
 };
 
 int main() {
-     WeightedGraph wg; 
+    WeightedGraph wg;
 }

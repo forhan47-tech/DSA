@@ -20,8 +20,8 @@ public:
     }
 
     void clear() {
-        for (int i = 0; i < slots; i++) {
-            table[i].clear();
+        for (auto &slot : table)  {
+            slot.clear();
         }
         count = 0;
     }

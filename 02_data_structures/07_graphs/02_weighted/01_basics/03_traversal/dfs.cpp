@@ -3,17 +3,23 @@
 #include <list>
 using namespace std;
 
-class WeightedGraph {
-    int V; 
-    bool isDirected;
-    vector<list<pair<int,int>>> adj;
+class Edge {
+public:
+    int dest;
+    int weight;
+};
 
-      void DFSUtil(int u, vector<bool>& visited) const {
+class WeightedGraph {
+    int V;
+    bool isDirected;
+    vector<list<Edge>> adj;
+
+    void DFSUtil(int u, vector<bool>& visited) const {
         visited[u] = true;
         cout << u << " ";
-        for (auto [v, w] : adj[u]) {
-            if (!visited[v]) {
-                DFSUtil(v, visited);
+        for (auto &edge : adj[u]) {
+            if (!visited[edge.dest]) {
+                DFSUtil(edge.dest, visited);
             }
         }
     }
@@ -21,16 +27,16 @@ class WeightedGraph {
 public:
     WeightedGraph(int V = 0, bool directed = false) {
         this->V = V; 
-        isDirected = directed; 
+        isDirected = directed;
         adj.resize(V);
     }
 
-     void DFS(int start) const {
+    void DFS(int start) const {
         vector<bool> visited(V, false);
         DFSUtil(start, visited);
     }
 };
 
 int main() {
-     WeightedGraph wg; 
+    WeightedGraph wg;
 }

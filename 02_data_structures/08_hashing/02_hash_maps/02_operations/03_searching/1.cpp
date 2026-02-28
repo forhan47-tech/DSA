@@ -3,35 +3,45 @@
 #include <list>
 using namespace std;
 
-class HashTable {
-    int slots;  
-    vector<list<pair<int, string>>> table;  
-    int count;  // track number of elements
+class KeyValue {
+public:
+    int key;
+    string value;
 
-    int hashFunction(int key) {
-        return key % slots;
+    KeyValue(int k, const string& v) { 
+        key = k; 
+        value= v;
+    }
+};
+
+class HashMap {
+    int slots;  
+    vector<list<KeyValue>> map;  
+    int count; 
+
+    int hashFunction(int key) const {
+        return abs(key) % slots;
     }
 
 public:
-    HashTable(int v) {
+    HashMap(int v) {
         slots = v;
-        table.resize(v);
+        map.resize(v);
         count = 0;
     }
 
-    string search(int key) {
+    string find(int key) const {
         int idx = hashFunction(key);
-        for (auto &kv : table[idx]) {
-            if (kv.first == key) {
-                return kv.second;
+        for (auto &kv : map[idx]) {
+            if (kv.key == key) {
+                return kv.value;
             }
         }
-        return "Not Found";
+        return "";
     }
 };
 
 int main() {
-    HashTable ht(7);
-
+    HashMap hm(7);
     return 0;
 }

@@ -3,9 +3,20 @@
 #include <list>
 using namespace std;
 
+class KeyValue {
+public:
+    int key;
+    string value;
+
+    KeyValue(int k, const string& v) { 
+        key = k; 
+        value= v;
+    }
+};
+
 class HashMap {
     int slots;  
-    vector<list<pair<int, string>>> map;  
+    vector<list<KeyValue>> map;  
     int count; 
 
     int hashFunction(int key) const {
@@ -22,6 +33,7 @@ public:
     bool empty() const {
         return count == 0;
     }
+
 };
 
 int main() {

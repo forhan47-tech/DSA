@@ -3,36 +3,47 @@
 #include <list>
 using namespace std;
 
-class HashTable {
-    int slots;  
-    vector<list<pair<int, string>>> table;  
-    int count;  // track number of elements
+class KeyValue {
+public:
+    int key;
+    string value;
 
-    int hashFunction(int key) {
-        return key % slots;
+    KeyValue(int k, const string& v) { 
+        key = k; 
+        value= v;
+    }
+};
+
+class HashMap {
+    int slots;  
+    vector<list<KeyValue>> map;  
+    int count; 
+
+    int hashFunction(int key) const {
+        return abs(key) % slots;
     }
 
 public:
-    HashTable(int v) {
+    HashMap(int v) {
         slots = v;
-        table.resize(v);
+        map.resize(v);
         count = 0;
     }
 
-    // Remove by key
-    void remove(int key) {
+     void remove(int key) {
         int idx = hashFunction(key);
-        for (auto it = table[idx].begin(); it != table[idx].end(); ++it) {
-            if (it->first == key) {
-                table[idx].erase(it);
-                count--;
-                return;
-            }
-        }
+        size_t before = map[idx].size();
+
+        map[idx].remove_if([&](auto& kv) { 
+            return kv.key == key;
+        });
+
+        size_t after = map[idx].size();
+        count -= (before - after);
     }
 };
 
 int main() {
-    HashTable ht(7);
+    HashMap hm(7);
     return 0;
 }

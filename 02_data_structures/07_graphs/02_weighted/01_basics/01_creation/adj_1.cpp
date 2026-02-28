@@ -3,23 +3,25 @@
 #include <list>
 using namespace std;
 
+class Edge {
+public:
+    int dest;
+    int weight;
+};
+
 class WeightedGraph {
-    int V; 
+    int V;
     bool isDirected;
-    vector<list<pair<int,int>>> adj;
+    vector<list<Edge>> adj;
 
 public:
     WeightedGraph(int V = 0, bool directed = false) {
         this->V = V; 
-        isDirected = directed; 
+        isDirected = directed;
         adj.resize(V);
-    }
-
-     int size() const { 
-        return V; 
     }
 };
 
 int main() {
-     WeightedGraph wg; 
+    WeightedGraph wg;
 }

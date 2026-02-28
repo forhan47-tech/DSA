@@ -4,19 +4,25 @@
 #include <queue>
 using namespace std;
 
+class Edge {
+public:
+    int dest;
+    int weight;
+};
+
 class WeightedGraph {
-    int V; 
+    int V;
     bool isDirected;
-    vector<list<pair<int,int>>> adj;
+    vector<list<Edge>> adj;
 
 public:
     WeightedGraph(int V = 0, bool directed = false) {
         this->V = V; 
-        isDirected = directed; 
+        isDirected = directed;
         adj.resize(V);
     }
 
-     void BFS(int start) const {
+    void BFS(int start) const {
         vector<bool> visited(V, false);
         queue<int> q;
         visited[start] = true;
@@ -26,10 +32,10 @@ public:
             int u = q.front(); 
             q.pop();
             cout << u << " ";
-            for (auto [v, w] : adj[u]) {
-                if (!visited[v]) {
-                    visited[v] = true;
-                    q.push(v);
+            for (auto &edge : adj[u]) {
+                if (!visited[edge.dest]) {
+                    visited[edge.dest] = true;
+                    q.push(edge.dest);
                 }
             }
         }
@@ -37,5 +43,5 @@ public:
 };
 
 int main() {
-     WeightedGraph wg; 
+    WeightedGraph wg;
 }
