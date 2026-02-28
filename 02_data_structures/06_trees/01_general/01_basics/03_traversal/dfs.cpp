@@ -15,13 +15,13 @@ public:
 class GeneralTree {
     Node* root;
 
-    void dfsHelper(Node* curr) {
+    void preorder(Node* curr) {
         if (!curr) 
             return;
 
         cout << curr->data << " ";
         for (auto ch : curr->child) 
-            dfsHelper(ch);
+            preorder(ch);
     }
 
 public:
@@ -31,7 +31,7 @@ public:
 
     void dfs() { 
         cout << "DFS: "; 
-        dfsHelper(root); 
+        preorder(root); 
         cout << endl; 
     }
 };

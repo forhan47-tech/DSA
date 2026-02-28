@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 using namespace std;
 
 class Node {
@@ -18,21 +17,25 @@ public:
 class BinaryTree {
     Node* root;
 
-    Node* buildTree(vector<int>& postorder, int postStart, int postEnd,
-                    vector<int>& inorder, int inStart, int inEnd,
-                    unordered_map<int,int>& inMap) {
-        if (postStart > postEnd || inStart > inEnd) 
+    int findIndex(vector<int>& inorder, int val, int start, int end) {
+        for (int i = start; i <= end; i++) {
+            if (inorder[i] == val) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    Node* buildTree(vector<int>& inorder, vector<int>& postorder, int& postIndex, int inStart, int inEnd) {
+        if (inStart > inEnd) {
             return nullptr;
+        }
 
-        Node* node = new Node(postorder[postEnd]);
-        int inRoot = inMap[node->data];
-        int numsLeft = inRoot - inStart;
-
-        node->left = buildTree(postorder, postStart, postStart+numsLeft-1,
-                               inorder, inStart, inRoot-1, inMap);
-        node->right = buildTree(postorder, postStart+numsLeft, postEnd-1,
-                                inorder, inRoot+1, inEnd, inMap);
-        return node;
+        Node* root = new Node(postorder[postIndex--]);
+        int inIndex = findIndex(inorder, root->data, inStart, inEnd);
+        root->right = buildTree(inorder, postorder, postIndex, inIndex + 1, inEnd);
+        root->left = buildTree(inorder, postorder, postIndex, inStart, inIndex - 1);
+        return root;
     }
 
 public:
@@ -41,10 +44,8 @@ public:
     }
 
     void buildFromPostIn(vector<int>& postorder, vector<int>& inorder) {
-        unordered_map<int,int> inMap;
-        for (int i=0; i<inorder.size(); i++) inMap[inorder[i]] = i;
-        root = buildTree(postorder, 0, postorder.size()-1,
-                         inorder, 0, inorder.size()-1, inMap);
+        int postIndex = postorder.size() - 1;
+        root = buildTree(inorder, postorder, postIndex, 0, inorder.size() - 1);
     }
 };
 
