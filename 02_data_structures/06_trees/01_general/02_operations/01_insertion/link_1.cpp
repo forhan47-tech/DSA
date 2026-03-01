@@ -15,18 +15,20 @@ public:
 class GeneralTree {
     Node* root;
 
-    bool buildTree(Node* curr, int pval, int cval) {
-        if (!curr) 
+    bool attach(Node* curr, int parent, int child) {
+        if (!curr) {
             return false;
+        }
 
-        if (curr->data == pval) {
-            curr->child.push_back(new Node(cval));
+        if (curr->data == parent) {
+            curr->child.push_back(new Node(child));
             return true;
         }
 
-        for (auto ch : curr->child) {
-            if (buildTree(ch, pval, cval)) 
+        for (auto cld : curr->child) {
+            if (attach(cld, parent, child)) {
                 return true;
+            }
         }
         return false;
     }
@@ -36,12 +38,12 @@ public:
         root = nullptr;
     }
 
-    void insert(int pval, int cval) {
+    void link(int p, int c) {
         if (!root) {
-            root = new Node(pval);
-            root->child.push_back(new Node(cval));
+            root = new Node(p);
+            root->child.push_back(new Node(c));
         } else {  
-            buildTree(root, pval, cval);
+            attach(root, p, c);
         }
     }
 };

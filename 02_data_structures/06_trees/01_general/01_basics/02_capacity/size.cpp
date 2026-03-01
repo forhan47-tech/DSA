@@ -16,15 +16,16 @@ class GeneralTree {
     Node* root;
 
     int findSize(Node* curr) {
-    if (!curr) 
-        return 0;
+        if (!curr) {
+            return 0;
+        }
 
-    int count = 1; 
-    for (auto ch : curr->child) {
-        count += findSize(ch);
+        int count = 1; 
+        for (auto cld : curr->child) {
+            count += findSize(cld);
+        }
+        return count;
     }
-    return count;
-}
 
 public:
     GeneralTree() {

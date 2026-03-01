@@ -15,28 +15,25 @@ public:
 class GeneralTree {
     Node* root;
 
-    bool searchDFS(Node* root, int key) {
-    if (!root) 
-        return false;
+    void postorder(Node* curr) {
+        if (!curr) 
+            return;
 
-    if (root->data == key) 
-        return true;
-
-    for (auto ch : root->child) {
-        if (searchDFS(ch, key)) 
-            return true;
+        for (auto cld : curr->child) {
+            postorder(cld);
+        }
+        cout << curr->data << " ";
     }
-    return false;
-}
-
 
 public:
     GeneralTree() {
         root = nullptr;
     }
 
-    bool search(int key) { 
-        return searchDFS(root, key); 
+    void dfs() { 
+        cout << "DFS: "; 
+        postorder(root); 
+        cout << endl; 
     }
 };
 

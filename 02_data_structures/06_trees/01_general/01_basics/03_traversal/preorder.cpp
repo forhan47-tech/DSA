@@ -20,8 +20,8 @@ class GeneralTree {
             return;
 
         cout << curr->data << " ";
-        for (auto ch : curr->child) 
-            preorder(ch);
+        for (auto cld : curr->child) 
+            preorder(cld);
     }
 
 public:
@@ -38,5 +38,4 @@ public:
 
 int main() {
     GeneralTree tr;
-    tr.dfs();
 }

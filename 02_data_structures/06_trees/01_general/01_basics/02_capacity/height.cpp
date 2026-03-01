@@ -20,8 +20,8 @@ class GeneralTree {
             return 0; 
 
         int height = 0; 
-        for (auto ch : curr->child) { 
-            height = max(height, findHeight(ch)); 
+        for (auto cld : curr->child) { 
+            height = max(height, findHeight(cld)); 
         } 
         return 1 + height; 
     }

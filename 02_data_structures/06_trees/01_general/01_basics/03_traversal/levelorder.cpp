@@ -16,21 +16,22 @@ public:
 class GeneralTree {
     Node* root;
 
-    void levelOrder(Node* root) {
-        if (!root) 
+    void levelOrder(Node* parent) {
+        if (!parent) {
             return;
+        }
 
         queue<Node*> q;
-        q.push(root);
+        q.push(parent);
 
         while (!q.empty()) {
             Node* curr = q.front();
             q.pop();
 
             cout << curr->data << " ";
-
-            for (auto ch : curr->child) 
-                q.push(ch);
+            for (auto cld : curr->child) {
+                q.push(cld);
+            }
         }
     }
 
@@ -48,5 +49,4 @@ public:
 
 int main() {
     GeneralTree tr;
-    tr.bfs();
 }

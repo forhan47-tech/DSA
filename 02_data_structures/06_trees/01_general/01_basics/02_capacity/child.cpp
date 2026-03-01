@@ -15,20 +15,35 @@ public:
 class GeneralTree {
     Node* root;
 
-    int findChild(Node* curr) const {
+    Node* search(Node* curr, int key) { 
         if (!curr) {
-            return 0;
+            return nullptr;
         }
-        return curr->child.size();
+
+        if (curr->data == key) {
+            return curr;
+        }
+
+        for (auto cld : curr->child) { 
+            Node* res = search(cld, key);
+            if (res) {
+                return res; 
+            }
+        }
+        return nullptr; 
     }
 
 public:
     GeneralTree() {
         root = nullptr;
     }
-    
-    int child() { 
-        return findChild(root); 
+
+    int countChild(int key) { 
+        Node* parent = search(root, key); 
+        if (!parent) {
+            return -1; 
+        }
+        return parent->child.size(); 
     }
 };
 
