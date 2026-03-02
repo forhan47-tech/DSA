@@ -17,10 +17,8 @@ class BST {
     Node* root;
     int count;
 
-
     void freeTree(Node* root) {
-        if (root == nullptr) 
-            return;
+        if (root == nullptr) return;
 
         freeTree(root->left);
         freeTree(root->right);

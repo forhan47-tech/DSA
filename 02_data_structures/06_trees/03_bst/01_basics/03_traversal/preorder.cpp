@@ -17,8 +17,7 @@ class BST {
     Node* root;
 
     void preorder(Node* root) {
-        if (root == nullptr) 
-            return;
+        if (root == nullptr) return;
 
         cout << root->data << " ";
         preorder(root->left);

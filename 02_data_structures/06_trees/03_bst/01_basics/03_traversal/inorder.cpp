@@ -17,8 +17,7 @@ class BST {
     Node* root;
 
     void inorder(Node* root) {
-        if (root == nullptr) 
-            return;
+        if (root == nullptr) return;
         
         inorder(root->left);
         cout << root->data << " ";
@@ -39,5 +38,4 @@ public:
 
 int main() {
     BST bst;
-    bst.dfs();
 }

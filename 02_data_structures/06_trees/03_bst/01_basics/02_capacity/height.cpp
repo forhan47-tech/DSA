@@ -16,13 +16,10 @@ public:
 class BST {
     Node* root;
 
-    int findHeight(Node* root) {
-        if (root == nullptr) 
-            return 0;
-        
-        int leftHeight = findHeight(root->left);
-        int rightHeight = findHeight(root->right);
-        return 1 + max(leftHeight, rightHeight);
+    int heightHelper(Node* root) {
+        if (root == nullptr) return 0;
+
+        return 1 + max(heightHelper(root->left), heightHelper(root->right));
     }
 
 public:
@@ -31,7 +28,7 @@ public:
     }
 
     int height() {
-        return findHeight(root);
+        return heightHelper(root);
     }
 };
 

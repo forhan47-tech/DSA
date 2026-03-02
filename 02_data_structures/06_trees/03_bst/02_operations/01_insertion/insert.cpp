@@ -48,6 +48,4 @@ public:
 
 int main() {
     BST bst;
-    bst.insert(50);
-    bst.insert(30);
 }

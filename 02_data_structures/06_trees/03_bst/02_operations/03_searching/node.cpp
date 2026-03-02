@@ -34,13 +34,11 @@ public:
         root = nullptr;
     }
 
-    bool contains(int val) {
+    bool find(int val) {
         return search(root, val);
     }
 };
 
 int main() {
     BST bst;
-    cout << "Search 40: " << (bst.contains(40) ? "Found" : "Not Found") << endl;
-    cout << "Search 25: " << (bst.contains(25) ? "Found" : "Not Found") << endl;
 }

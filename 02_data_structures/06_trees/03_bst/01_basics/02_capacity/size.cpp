@@ -16,11 +16,11 @@ public:
 class BST {
     Node* root;
 
-    int findSize(Node* root) {
+    int sizeHelper(Node* root) {
         if (root == nullptr) 
             return 0;
         
-        return 1 + findSize(root->left) + findSize(root->right);
+        return 1 + sizeHelper(root->left) + sizeHelper(root->right);
     }
 
 public:
@@ -29,7 +29,7 @@ public:
     }
 
     int size() {
-        return findSize(root);
+        return sizeHelper(root);
     }
 };
 

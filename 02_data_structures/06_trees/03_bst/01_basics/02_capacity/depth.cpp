@@ -16,16 +16,15 @@ public:
 class BST {
     Node* root;
 
-    int findDepth(Node* root, int key, int depth) {
-    if (!root) return -1;
+    int depthHelper(Node* root, int key, int depth) {
+        if (!root) return -1;
 
-    if (root->data == key)
-        return depth;
+        if (root->data == key) return depth;
 
-    if (key < root->data) 
-        return findDepth(root->left, key, depth + 1);
-    else 
-        return findDepth(root->right, key, depth + 1);
+        if (key < root->data) 
+            return depthHelper(root->left, key, depth + 1);
+        else 
+            return depthHelper(root->right, key, depth + 1);
     }
 
 public:
@@ -34,7 +33,7 @@ public:
     }
 
     int depth(int key) {
-        return findDepth(root, key, 0);
+        return depthHelper(root, key, 0);
     }
 };
 

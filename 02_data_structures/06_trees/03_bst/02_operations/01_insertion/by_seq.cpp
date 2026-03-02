@@ -32,7 +32,6 @@ class BST {
         return root;
     }
 
-
 public:
     BST() {
         root = nullptr;
@@ -51,6 +50,7 @@ public:
 };
 
 int main() {
-    BST bt;
-    vector<int> vec;
+    BST bst;
+    vector<int> vec = {10, 5, 20, 15, 25};
+    bst.insert(vec);
 }

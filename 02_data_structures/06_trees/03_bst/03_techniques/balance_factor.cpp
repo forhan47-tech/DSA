@@ -20,8 +20,6 @@ class BST {
         if (!root) 
             return 0;
 
-        int leftHeight = findHeight(root->left);
-        int rightHeight = findHeight(root->right);
         return 1 + max(leftHeight, rightHeight);
     }
 
