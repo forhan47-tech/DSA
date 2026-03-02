@@ -16,18 +16,17 @@ public:
 class BinaryTree {
     Node* root;
 
-    int findDepth(Node* root, int key, int level) {
+    int depthHelper(Node* root, int key, int level) {
         if (!root) 
             return -1;
 
         if (root->data == key) 
             return level;
 
-        int leftDepth = findDepth(root->left, key, level + 1);
-        if (leftDepth != -1) 
-            return leftDepth;
+        int leftDepth = depthHelper(root->left, key, level + 1);
+        if (leftDepth != -1) return leftDepth;
 
-        return findDepth(root->right, key, level + 1);
+        return depthHelper(root->right, key, level + 1);
     }
 
 public:
@@ -36,7 +35,7 @@ public:
     }
 
     int depth(int key) { 
-        return findDepth(root, key, 0); 
+        return depthHelper(root, key, 0); 
     }
 };
 

@@ -17,8 +17,7 @@ class BinaryTree {
     Node* root;
 
     void freeTree(Node* root) {
-        if (!root) 
-            return;
+        if (!root) return;
 
         freeTree(root->left);
         freeTree(root->right);

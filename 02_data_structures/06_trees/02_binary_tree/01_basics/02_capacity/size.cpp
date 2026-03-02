@@ -16,12 +16,11 @@ public:
 class BinaryTree {
     Node* root;
 
-    int findSize(Node* root) { 
+    int sizeHelper(Node* root) { 
         if (!root) 
             return 0; 
-        return 1 + findSize(root->left) + findSize(root->right); 
+        return 1 + sizeHelper(root->left) + sizeHelper(root->right); 
     }
-
 
 public:
     BinaryTree() {
@@ -29,7 +28,7 @@ public:
     }
 
     int size() { 
-        return findSize(root); 
+        return sizeHelper(root); 
     }
 };
 

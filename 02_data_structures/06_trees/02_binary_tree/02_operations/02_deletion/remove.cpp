@@ -30,8 +30,9 @@ class BinaryTree {
                     delete curr->left;
                     curr->left = nullptr;
                     return;
-                } else 
+                } else {
                     q.push(curr->left);
+                }
             }
 
             if (curr->right) {
@@ -39,8 +40,9 @@ class BinaryTree {
                     delete curr->right;
                     curr->right = nullptr;
                     return;
-                } else 
+                } else {
                     q.push(curr->right);
+                }
             }
         }
     }
@@ -51,8 +53,7 @@ public:
     }
 
     void remove(int key) {
-        if (!root) 
-            return;
+        if (!root) return;
 
         if (!root->left && !root->right) {
             if (root->data == key) {

@@ -17,8 +17,7 @@ class BinaryTree {
     Node* root;
 
     void postorder(Node* root) {
-        if (!root) 
-            return;
+        if (!root) return;
 
         postorder(root->left);
         postorder(root->right);

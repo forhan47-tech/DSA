@@ -17,8 +17,7 @@ class BinaryTree {
     Node* root;
 
     void preorder(Node* root) {
-        if (!root) 
-            return;
+        if (!root) return;
         
         cout << root->data << " ";
         preorder(root->left);

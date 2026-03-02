@@ -23,8 +23,7 @@ public:
     }
 
     void bfs() {
-        if (!root) 
-            return;
+        if (!root) return;
 
         cout << "Level Order: ";
         queue<Node*> q;

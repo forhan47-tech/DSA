@@ -17,9 +17,9 @@ public:
 class BinaryTree {
     Node* root;
 
-    int findHeight(Node* root) {
+    int heightHelper(Node* root) {
         if (!root) return 0;
-        return 1 + max(findHeight(root->left), findHeight(root->right));
+        return 1 + max(heightHelper(root->left), heightHelper(root->right));
     }
 
 public:
@@ -28,11 +28,10 @@ public:
     }
 
     int height() { 
-        return findHeight(root); 
+        return heightHelper(root); 
     }
 };
 
 int main() {
     BinaryTree bt;
-    cout << "Height of tree: " << bt.height() << endl;
 }
