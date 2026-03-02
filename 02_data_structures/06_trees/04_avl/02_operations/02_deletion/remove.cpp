@@ -82,11 +82,11 @@ class AVL {
         if (!node) return node;
 
         node->height = 1 + max(getHeight(node->left), getHeight(node->right));
-        return rebalanceAfterDeletion(node);
+        return rebalance(node);
     }
 
 
-    Node* rebalanceAfterDeletion(Node* node) {
+    Node* rebalance(Node* node) {
         int balance = getBalance(node);
 
         // LL
@@ -115,7 +115,7 @@ class AVL {
 public:
     AVL() : root(nullptr) {}
 
-    void deleteKey(int key) { root = deleteHelper(root, key); }
+    void remove(int key) { root = deleteHelper(root, key); }
 };
 
 int main() {

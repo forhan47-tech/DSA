@@ -16,8 +16,7 @@ class GeneralTree {
     Node* root;
 
     void preorder(Node* curr) {
-        if (!curr) 
-            return;
+        if (!curr) return;
 
         cout << curr->data << " ";
         for (auto cld : curr->child) 

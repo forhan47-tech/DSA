@@ -5,11 +5,11 @@ using namespace std;
 
 class Node {
 public:
-    unordered_map<char, Node*> children;
-    bool isEndOfWord;
+    unordered_map<char, Node*> child;
+    bool isEnd;
 
     Node() {
-        isEndOfWord = false;
+        isEnd = false;
     }
 };
 
@@ -23,18 +23,17 @@ public:
     }
 
     void insert(const string& word) {
-        Node* current = root;
+        Node* curr = root;
         for (char ch : word) {
-            if (!current->children[ch]) {
-                current->children[ch] = new Node();
+            if (!curr->child[ch]) {
+                curr->child[ch] = new Node();
             }
-            current = current->children[ch];
+            curr = curr->child[ch];
         }
-        current->isEndOfWord = true;
+        curr->isEnd = true;
     }
 };
 
-// Demo
 int main() {
     Trie trie;
     trie.insert("cat");

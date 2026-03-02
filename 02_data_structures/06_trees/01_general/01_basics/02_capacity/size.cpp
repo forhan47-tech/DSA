@@ -15,14 +15,12 @@ public:
 class GeneralTree {
     Node* root;
 
-    int findSize(Node* curr) {
-        if (!curr) {
-            return 0;
-        }
+    int sizeHelper(Node* curr) {
+        if (!curr) return 0;
 
         int count = 1; 
         for (auto cld : curr->child) {
-            count += findSize(cld);
+            count += sizeHelper(cld);
         }
         return count;
     }
@@ -33,7 +31,7 @@ public:
     }
 
     int size() { 
-        return findSize(root); 
+        return sizeHelper(root); 
     }
 };
 

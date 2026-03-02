@@ -15,13 +15,11 @@ public:
 class GeneralTree {
     Node* root;
 
-    void free(Node* curr) { 
-        if (!curr) {
-            return; 
-        }
+    void freeTree(Node* curr) { 
+        if (!curr) return;
         
         for (Node* cld : curr->child) { 
-            free(cld);
+            freeTree(cld);
         } 
         delete curr; 
     }
@@ -36,7 +34,7 @@ public:
     }
 
     void clear() {
-        free(root);
+        freeTree(root);
         root = nullptr;
     }
 };

@@ -82,7 +82,7 @@ public:
         }
 
         if (keyNode) {
-            keyNode->data = lastNode->data; // replace with deepest node
+            keyNode->data = lastNode->data;
             deleteDeepest(lastNode);
         }
     }

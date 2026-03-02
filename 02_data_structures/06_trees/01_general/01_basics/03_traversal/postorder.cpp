@@ -16,8 +16,7 @@ class GeneralTree {
     Node* root;
 
     void postorder(Node* curr) {
-        if (!curr) 
-            return;
+        if (!curr) return;
 
         for (auto cld : curr->child) {
             postorder(cld);

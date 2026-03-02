@@ -18,12 +18,8 @@ class BinaryTree {
     Node* root;
 
     int findHeight(Node* root) {
-        if (!root) 
-            return 0;
-        
-        int leftHeight = findHeight(root->left);
-        int rightHeight = findHeight(root->right);
-        return 1 + max(leftHeight, rightHeight);
+        if (!root) return 0;
+        return 1 + max(findHeight(root->left), findHeight(root->right));
     }
 
 public:

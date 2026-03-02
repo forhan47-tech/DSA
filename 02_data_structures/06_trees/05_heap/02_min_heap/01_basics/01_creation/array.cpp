@@ -6,9 +6,8 @@ class MinHeap {
     vector<int> heap;
 
 public:
-    int top() {
-        if (heap.empty()) return -1;
-        return heap[0];
+    MinHeap() {
+        cout << "min-heap created successfully" << endl; 
     }
 };
 

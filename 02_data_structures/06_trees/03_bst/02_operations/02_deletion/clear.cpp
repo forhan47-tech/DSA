@@ -18,12 +18,12 @@ class BST {
     int count;
 
 
-    void clear(Node* root) {
+    void freeTree(Node* root) {
         if (root == nullptr) 
             return;
 
-        clear(root->left);
-        clear(root->right);
+        freeTree(root->left);
+        freeTree(root->right);
         delete root;
     }
 
@@ -34,7 +34,7 @@ public:
     }
 
     ~BST() { 
-        clear(root); 
+        clear(); 
     }
 
     int size() const { 
@@ -42,7 +42,7 @@ public:
     }
 
     void clear() {
-        clear(root);
+        freeTree(root);
         root = nullptr;
         count = 0;
     }

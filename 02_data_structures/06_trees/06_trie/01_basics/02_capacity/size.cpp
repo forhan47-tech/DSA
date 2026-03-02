@@ -4,11 +4,11 @@ using namespace std;
 
 class Node {
 public:
-    unordered_map<char, Node*> children;
-    bool isEndOfWord;
+    unordered_map<char, Node*> child;
+    bool isEnd;
 
     Node() {
-        isEndOfWord = false;
+        isEnd = false;
     }
 };
 
@@ -17,8 +17,8 @@ class Trie {
 
     int sizeHelper(Node* node) {
     if (!node) return 0;
-    int count = node->isEndOfWord ? 1 : 0;
-    for (auto& [ch, child] : node->children) {
+    int count = node->isEnd ? 1 : 0;
+    for (auto& [ch, child] : node->child) {
         count += sizeHelper(child);
     }
     return count;

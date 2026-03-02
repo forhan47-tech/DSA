@@ -4,11 +4,11 @@ using namespace std;
 
 class Node {
 public:
-    unordered_map<char, Node*> children;
-    bool isEndOfWord;
+    unordered_map<char, Node*> child;
+    bool isEnd;
 
     Node() {
-        isEndOfWord = false;
+        isEnd = false;
     }
 };
 
@@ -16,12 +16,12 @@ class Trie {
 private:
     Node* root;
 
-    void dfsTraversal(Node* node, string prefix) {
-    if (node->isEndOfWord) {
+    void dfs(Node* node, string prefix) {
+    if (node->isEnd) {
         cout << prefix << endl;
     }
-    for (auto& pair : node->children) {
-        dfsTraversal(pair.second, prefix + pair.first);
+    for (auto& pair : node->child) {
+        dfs(pair.second, prefix + pair.first);
     }
 }
 
@@ -30,10 +30,9 @@ public:
         root = new Node(); 
     }
 
-    void printAllWords() {
-    dfsTraversal(root, "");
-}
-
+    void print() {
+        dfs(root, "");
+    }
 };
 
 int main() {

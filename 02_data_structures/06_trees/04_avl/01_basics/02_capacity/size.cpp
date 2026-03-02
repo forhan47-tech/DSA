@@ -19,10 +19,8 @@ class AVL {
     Node* root;
 
     int sizeHelper(Node* root) {
-    if (!root) 
-        return 0;
-    
-    return 1 + sizeHelper(root->left) + sizeHelper(root->right);
+        if (!root) return 0;
+        return 1 + sizeHelper(root->left) + sizeHelper(root->right);
     }
 
 

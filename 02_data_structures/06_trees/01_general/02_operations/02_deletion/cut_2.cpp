@@ -23,11 +23,11 @@ class GeneralTree {
 
         for (Node* cld : curr->child) {
             if (cld->data == key) {
-                free(cld);  
+                freeTree(cld);
                 found = true;
             } else {
                 if (detach(cld, key)) found = true;
-                newChild.push_back(cld); 
+                newChild.push_back(cld);
             }
         }
 
@@ -35,14 +35,11 @@ class GeneralTree {
         return found;
     }
 
-
-    void free(Node* curr) {
-        if (!curr) {
-            return;
-        }
+    void freeTree(Node* curr) {
+        if (!curr) return;
         for (auto cld : curr->child) {
-            free(cld);
-        } 
+            freeTree(cld);
+        }
         delete curr;
     }
 
@@ -53,19 +50,22 @@ public:
 
     void cut(int key) {
         if (!root) {
+            cout << "Tree is empty!" << endl;
             return;
         }
 
         if (root->data == key) {
-            free(root);
+            freeTree(root);
             root = nullptr;
         } else {
-            detach(root, key);
+            if (!detach(root, key)) {
+                cout << "Node " << key << " not found!" << endl;
+            }
         }
     }
 };
 
-
 int main() {
     GeneralTree tr;
+    tr.cut(2); 
 }

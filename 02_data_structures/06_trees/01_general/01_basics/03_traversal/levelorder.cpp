@@ -17,9 +17,7 @@ class GeneralTree {
     Node* root;
 
     void levelOrder(Node* parent) {
-        if (!parent) {
-            return;
-        }
+        if (!parent) return;
 
         queue<Node*> q;
         q.push(parent);

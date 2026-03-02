@@ -15,24 +15,17 @@ public:
 class GeneralTree {
     Node* root;
 
-     Node* search(Node* parent, int key) {
-        if (!parent) {
-            return nullptr;
-        }
+    Node* search(Node* parent, int key) {
+        if (!parent) return nullptr;
 
-        if (parent->data == key) {
-            return parent;
-        }
+        if (parent->data == key) return parent;
 
         for (auto cld : parent->child) {
             Node* res = search(cld, key);
-            if (res) {
-                return res;  
-            }
+            if (res) return res;  
         }
         return nullptr;
     }
-
 
 public:
     GeneralTree() {
@@ -45,14 +38,19 @@ public:
             root->child.push_back(new Node(c));
             return;
         }
-
+        
         Node* parent = search(root, p);
         if (parent) {
             parent->child.push_back(new Node(c));
+        } else {
+            cout << "Parent " << p << " not found!" << endl;
         }
     }
 };
 
 int main() {
     GeneralTree tr;
+    tr.link(1, 2);   
+    tr.link(1, 3); 
+    tr.link(5, 6);   
 }

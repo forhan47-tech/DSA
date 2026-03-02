@@ -1,12 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <stdexcept>
 using namespace std;
 
 class MinHeap {
     vector<int> heap;
 
-    int parent(int i) { return (i - 1) / 2; }
     int left(int i) { return 2 * i + 1; }
     int right(int i) { return 2 * i + 2; }
 
@@ -20,13 +18,6 @@ class MinHeap {
         if (smallest != i) {
             swap(heap[i], heap[smallest]);
             heapifyDown(smallest);
-        }
-    }
-
-    void heapifyUp(int i) {
-        while (i > 0 && heap[parent(i)] > heap[i]) {
-            swap(heap[i], heap[parent(i)]);
-            i = parent(i);
         }
     }
 

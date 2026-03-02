@@ -6,12 +6,11 @@ class MinHeap {
     vector<int> heap;
 
 public:
-    int top() {
-        if (heap.empty()) return -1;
-        return heap[0];
+    int size() const { 
+        return heap.size(); 
     }
 };
 
 int main() {
-    MinHeap mh;
+    MinHeap h;
 }

@@ -15,20 +15,14 @@ public:
 class GeneralTree {
     Node* root;
 
-    int findDepth(Node* curr, int key, int level) {
-        if (!curr) {
-            return -1;
-        }
+    int depthHelper(Node* curr, int key, int level) {
+        if (!curr) return -1;
 
-        if (curr->data == key) {
-            return level;
-        }
+        if (curr->data == key) return level;
 
         for (auto cld : curr->child) {
-            int depth = findDepth(cld, key, level + 1);
-            if (depth != -1) {
-                return depth;
-            }
+            int depth = depthHelper(cld, key, level + 1);
+            if (depth != -1) return depth;
         }
         return -1;
     }
@@ -39,7 +33,7 @@ public:
     }
 
     int depth(int key) {
-        return findDepth(root, key, 0);
+        return depthHelper(root, key, 0);
     }
 };
 

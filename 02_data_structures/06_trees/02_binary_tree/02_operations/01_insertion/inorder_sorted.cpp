@@ -22,10 +22,10 @@ class BinaryTree {
             return nullptr;
 
         int mid = (lf + rt) / 2;
-        Node* node = new Node(inorder[mid]);
-        node->left = buildTree(inorder, lf, mid - 1);
-        node->right = buildTree(inorder, mid + 1, rt);
-        return node;
+        Node* root = new Node(inorder[mid]);  
+        root->left = buildTree(inorder, lf, mid - 1);
+        root->right = buildTree(inorder, mid + 1, rt);
+        return root;
     }
 
 public:

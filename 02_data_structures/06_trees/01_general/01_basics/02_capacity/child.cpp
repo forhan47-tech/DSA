@@ -16,19 +16,13 @@ class GeneralTree {
     Node* root;
 
     Node* search(Node* curr, int key) { 
-        if (!curr) {
-            return nullptr;
-        }
+        if (!curr) return nullptr;
 
-        if (curr->data == key) {
-            return curr;
-        }
+        if (curr->data == key) return curr;
 
         for (auto cld : curr->child) { 
             Node* res = search(cld, key);
-            if (res) {
-                return res; 
-            }
+            if (res) return res; 
         }
         return nullptr; 
     }
@@ -40,9 +34,7 @@ public:
 
     int countChild(int key) { 
         Node* parent = search(root, key); 
-        if (!parent) {
-            return -1; 
-        }
+        if (!parent) return -1; 
         return parent->child.size(); 
     }
 };

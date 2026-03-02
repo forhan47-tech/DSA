@@ -5,11 +5,11 @@ using namespace std;
 
 class Node {
 public:
-    unordered_map<char, Node*> children;
-    bool isEndOfWord;
+    unordered_map<char, Node*> child;
+    bool isEnd;
 
     Node() {
-        isEndOfWord = false;
+        isEnd = false;
     }
 };
 
@@ -22,14 +22,13 @@ public:
         root = new Node(); 
     }
 
-    // Search for a word
     bool search(const string& word) {
-        Node* current = root;
+        Node* curr = root;
         for (char ch : word) {
-            if (!current->children[ch]) return false;
-            current = current->children[ch];
+            if (!curr->child[ch]) return false;
+            curr = curr->child[ch];
         }
-        return current->isEndOfWord;
+        return curr->isEnd;
     }
 };
 

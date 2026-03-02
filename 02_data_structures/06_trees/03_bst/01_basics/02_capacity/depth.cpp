@@ -17,8 +17,7 @@ class BST {
     Node* root;
 
     int findDepth(Node* root, int key, int depth) {
-    if (!root) 
-        return -1;
+    if (!root) return -1;
 
     if (root->data == key)
         return depth;

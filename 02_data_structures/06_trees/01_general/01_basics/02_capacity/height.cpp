@@ -15,13 +15,12 @@ public:
 class GeneralTree {
     Node* root;
 
-    int findHeight(Node* curr) { 
-        if (!curr) 
-            return 0; 
+    int heightHelper(Node* curr) { 
+        if (!curr) return 0; 
 
         int height = 0; 
         for (auto cld : curr->child) { 
-            height = max(height, findHeight(cld)); 
+            height = max(height, heightHelper(cld)); 
         } 
         return 1 + height; 
     }
@@ -32,7 +31,7 @@ public:
     }
 
     int height() { 
-        return findHeight(root); 
+        return heightHelper(root); 
     }
 };
 

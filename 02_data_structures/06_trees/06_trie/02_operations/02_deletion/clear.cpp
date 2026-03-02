@@ -4,9 +4,9 @@ using namespace std;
 
 class Node {
 public:
-    unordered_map<char, Node*> children;
-    bool isEndOfWord;
-    Node() { isEndOfWord = false; }
+    unordered_map<char, Node*> child;
+    bool isEnd;
+    Node() { isEnd = false; }
 };
 
 class Trie {
@@ -14,7 +14,7 @@ class Trie {
 
     void deleteTrieHelper(Node* node) {
         if (!node) return;
-        for (auto& pair : node->children) {
+        for (auto& pair : node->child) {
             deleteTrieHelper(pair.second);
         }
         delete node;

@@ -31,7 +31,12 @@ public:
     }
 
     ~BinaryTree() { 
+        clear(); 
+    }
+
+    void clear() { 
         freeTree(root); 
+        root = nullptr; 
     }
 };
 

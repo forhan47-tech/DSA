@@ -19,7 +19,7 @@ class BinaryTree {
     void preorder(Node* root) {
         if (!root) 
             return;
-
+        
         cout << root->data << " ";
         preorder(root->left);
         preorder(root->right);

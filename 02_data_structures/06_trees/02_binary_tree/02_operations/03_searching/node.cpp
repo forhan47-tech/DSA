@@ -16,21 +16,23 @@ public:
 class BinaryTree {
     Node* root;
 
-    int findSize(Node* root) { 
-        if (!root) 
-            return 0; 
+    bool search(Node* curr, int key) {
+        if (!curr) 
+            return false;
 
-        return 1 + findSize(root->left) + findSize(root->right); 
+        if (curr->data == key) 
+            return true;
+
+        return search(curr->left, key) || search(curr->right, key);
     }
-
 
 public:
     BinaryTree() {
         root = nullptr;
     }
 
-    int size() { 
-        return findSize(root); 
+    bool find(int key) { 
+        return search(root, key); 
     }
 };
 

@@ -22,7 +22,7 @@ public:
         root = nullptr;
     }
 
-    void levelOrder() {
+    void bfs() {
         if (!root) 
             return;
 
@@ -48,5 +48,5 @@ public:
 
 int main() {
     BinaryTree bt;
-    bt.levelOrder();
+    bt.bfs();
 }

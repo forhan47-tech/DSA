@@ -4,15 +4,13 @@ using namespace std;
 
 class MaxHeap {
     vector<int> heap;
-    
+
 public:
-    int top() {
-        if (heap.empty()) 
-            return -1;
-        return heap[0];
+    MaxHeap() {
+        cout << "max-heap created successfully" << endl; 
     }
 };
 
 int main() {
-    MaxHeap h;
+    MaxHeap mh;
 }

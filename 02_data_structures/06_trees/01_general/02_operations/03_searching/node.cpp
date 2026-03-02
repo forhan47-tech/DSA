@@ -16,23 +16,16 @@ class GeneralTree {
     Node* root;
 
     Node* search(Node* parent, int key) {
-    if (!parent) {
+        if (!parent) return nullptr;
+
+        if (parent->data == key) return parent;
+
+        for (auto cld : parent->child) {
+            Node* res = search(cld, key);
+            if (res) return res;  
+        }
         return nullptr;
     }
-
-    if (parent->data == key) {
-        return parent;
-    }
-
-    for (auto cld : parent->child) {
-        Node* res = search(cld, key);
-        if (res) {
-            return res;  
-        }
-    }
-    return nullptr;
-}
-
 
 public:
     GeneralTree() {
@@ -46,4 +39,5 @@ public:
 
 int main() {
     GeneralTree tr;
+    cout << tr.find(2) << endl;
 }

@@ -5,7 +5,6 @@ using namespace std;
 class MinHeap {
     vector<int> heap;
 
-    int parent(int i) { return (i - 1) / 2; }
     int left(int i) { return 2 * i + 1; }
     int right(int i) { return 2 * i + 2; }
 
@@ -22,11 +21,13 @@ class MinHeap {
         }
     }
 
-    void heapifyUp(int i) {
-        while (i > 0 && heap[parent(i)] > heap[i]) {
-            swap(heap[i], heap[parent(i)]);
-            i = parent(i);
-        }
+
+public:
+    void buildHeap(vector<int>& arr) { 
+        heap = arr; 
+        for (int i = heap.size()/2 - 1; i >= 0; i--) { 
+            heapifyDown(i); 
+        } 
     }
 };
 

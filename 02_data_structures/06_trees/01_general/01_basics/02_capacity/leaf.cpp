@@ -16,13 +16,9 @@ class GeneralTree {
     Node* root;
 
     int countleaf(Node* curr) const {
-        if (!curr) {
-            return 0;
-        }
+        if (!curr) return 0;
 
-        if (curr->child.empty()) {
-            return 1;
-        }
+        if (curr->child.empty()) return 1;
 
         int total = 0;
         for (auto cld : curr->child) {

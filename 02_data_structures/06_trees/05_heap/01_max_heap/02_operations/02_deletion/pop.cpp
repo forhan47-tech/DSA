@@ -5,7 +5,6 @@ using namespace std;
 class MaxHeap {
     vector<int> heap;
 
-    int parent(int i) { return (i - 1) / 2; }
     int left(int i) { return 2 * i + 1; }
     int right(int i) { return 2 * i + 2; }
 
@@ -19,13 +18,6 @@ class MaxHeap {
         if (largest != i) {
             swap(heap[i], heap[largest]);
             heapifyDown(largest);
-        }
-    }
-
-    void heapifyUp(int i) {
-        while (i > 0 && heap[parent(i)] < heap[i]) {
-            swap(heap[i], heap[parent(i)]);
-            i = parent(i);
         }
     }
 
