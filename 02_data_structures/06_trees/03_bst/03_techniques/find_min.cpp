@@ -17,11 +17,9 @@ class BST {
     Node* root;
 
     Node* findMin(Node* root) {
-        if (!root) 
-            return nullptr;
+        if (!root) return nullptr;
 
-        while (root->left) 
-            root = root->left;
+        while (root->left) root = root->left;
         return root;
     }
 
@@ -33,7 +31,7 @@ public:
     int findMin() {
         Node* minNode = findMin(root);
         if (!minNode) 
-            throw runtime_error("Tree is empty!");
+            return -1; 
         return minNode->data;
     }
 };

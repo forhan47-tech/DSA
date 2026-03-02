@@ -22,7 +22,7 @@ class BST {
         return root;
     }
 
-    Node* predecessor(Node* curr, int val) {
+    Node* findPredecessor(Node* curr, int val) {
         Node* pred = nullptr;
 
         while (curr) {
@@ -46,10 +46,10 @@ public:
     }
 
     int predecessor(int val) {
-        Node* predNode = predecessor(root, val);
-        if (!predNode) 
-            throw runtime_error("Predecessor not found!");
-        return predNode->data;
+        Node* pred = findPredecessor(root, val);
+        if (!pred) 
+            return -1; 
+        return pred->data;
     }
 };
 

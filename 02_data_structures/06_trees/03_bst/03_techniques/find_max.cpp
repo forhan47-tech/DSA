@@ -17,11 +17,9 @@ class BST {
     Node* root;
 
     Node* findMax(Node* root) {
-        if (!root) 
-            return nullptr;
+        if (!root) return nullptr;
 
-        while (root->right) 
-            root = root->right;
+        while (root->right) root = root->right;
         return root;
     }
 
@@ -31,10 +29,10 @@ public:
     }
 
     int findMax() {
-        Node* maxNode = findMax(root); 
-        if (!maxNode) 
-            throw runtime_error("Tree is empty!");
-        return maxNode->data;
+        Node* max = findMax(root); 
+        if (!max) 
+            return -1; 
+        return max->data;
     }
 };
 

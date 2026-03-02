@@ -20,26 +20,22 @@ class BST {
         if (!root) 
             return 0;
 
-        return 1 + max(leftHeight, rightHeight);
-    }
-
-    int balanceFactor(Node* root) {
-        if (!root) 
-            return 0;
-
-        return findHeight(root->left) - findHeight(root->right);
+        return 1 + max(findHeight(root->left), findHeight(root->right));
     }
 
 public:
     BST() {
         root = nullptr;
     }
+    
+    int balanceFactor() {
+        if (!root) 
+            return 0;
 
-    int balanceFactor() { 
-        return balanceFactor(root); 
+        return findHeight(root->left) - findHeight(root->right);
     }
 };
 
 int main() {
-    BST bt;
+    BST bst;
 }

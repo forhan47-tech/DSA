@@ -22,7 +22,7 @@ class BST {
         return root;
     }
 
-    Node* successor(Node* curr, int val) {
+    Node* findSuccessor(Node* curr, int val) {
         Node* succ = nullptr;
 
         while (curr) {
@@ -46,10 +46,10 @@ public:
     }
 
     int successor(int val) {
-        Node* succNode = successor(root, val);
-        if (!succNode) 
-            throw runtime_error("Successor not found!");
-        return succNode->data;
+        Node* succ = findSuccessor(root, val);
+        if (!succ) 
+            return -1; 
+        return succ->data;
     }
 };
 
