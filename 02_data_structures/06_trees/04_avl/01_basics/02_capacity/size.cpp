@@ -23,7 +23,6 @@ class AVL {
         return 1 + sizeHelper(root->left) + sizeHelper(root->right);
     }
 
-
 public:
     AVL() {
         root = nullptr;
@@ -33,6 +32,8 @@ public:
         return sizeHelper(root); 
     }
 };
+
 int main() {
-    AVL tree;
+    AVL avl;
+    cout << "Tree size: " << avl.size() << endl;
 }

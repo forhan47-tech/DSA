@@ -18,18 +18,22 @@ public:
 class AVL {
     Node* root;
 
-    void freeTree(Node* root) { 
-        if (!root) 
+    void freeTree(Node* curr) { 
+        if (!curr) 
             return; 
 
-        freeTree(root->left); 
-        freeTree(root->right); 
-        delete root; 
+        freeTree(curr->left); 
+        freeTree(curr->right); 
+        delete curr; 
     }
 
 public:
     AVL() {
         root = nullptr;
+    }
+
+    ~AVL() {
+        freeTree(root); 
     }
 };
 

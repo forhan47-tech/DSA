@@ -5,7 +5,9 @@ using namespace std;
 class MaxHeap {
     vector<int> heap;
 
-    int parent(int i) { return (i - 1) / 2; }
+    int parent(int i) { 
+        return (i - 1) / 2; 
+    }
     
     void heapifyUp(int i) {
         while (i > 0 && heap[parent(i)] < heap[i]) {
@@ -22,9 +24,5 @@ public:
 };
 
 int main() {
-    MaxHeap h;
-    h.push(10);
-    h.push(20);
-    h.push(5);
-    h.push(30);
+    MaxHeap mh;
 }

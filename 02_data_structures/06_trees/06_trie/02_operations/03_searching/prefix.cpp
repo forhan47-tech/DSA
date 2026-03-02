@@ -23,11 +23,11 @@ public:
     }
 
     bool startsWith(const string& prefix) { 
-        Node* node = root; 
+        Node* curr = root; 
         for (char ch : prefix) { 
-            if (!node->child[ch]) 
+            if (!curr->child[ch]) 
                 return false; 
-            node = node->child[ch]; 
+            curr = curr->child[ch]; 
         } 
         return true; 
     }

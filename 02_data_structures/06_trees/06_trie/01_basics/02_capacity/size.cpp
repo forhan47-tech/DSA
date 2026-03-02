@@ -15,19 +15,20 @@ public:
 class Trie {
     Node* root;
 
-    int sizeHelper(Node* node) {
-    if (!node) return 0;
-    int count = node->isEnd ? 1 : 0;
-    for (auto& [ch, child] : node->child) {
-        count += sizeHelper(child);
+    int sizeHelper(Node* curr) {
+        if (!curr) return 0;
+        int count = curr->isEnd ? 1 : 0;
+        for (auto& [ch, child] : curr->child) {
+            count += sizeHelper(child);
+        }
+        return count;
     }
-    return count;
-}
 
 public:
     Trie() { 
         root = new Node(); 
     }
+
     int size() {
         return sizeHelper(root);
     }
@@ -35,4 +36,5 @@ public:
 
 int main() {
     Trie trie;
+    cout << "Size of trie: " << trie.size() << endl;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 class Node {
@@ -7,18 +8,23 @@ public:
     Node* left;
     Node* right;
     int height;
-    Node(int val) : data(val), left(nullptr), right(nullptr), height(1) {}
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+        height = 1;
+    }
 };
 
 class AVL {
     Node* root;
 
-    int getHeight(Node* node) {
-        return node ? node->height : 0;
+    int getHeight(Node* curr) {
+        return curr ? curr->height : 0;
     }
 
-    int getBalance(Node* node) {
-        return node ? getHeight(node->left) - getHeight(node->right) : 0;
+    int getBalance(Node* curr) {
+        return curr ? getHeight(curr->left) - getHeight(curr->right) : 0;
     }
 
     Node* rightRotate(Node* y) {
@@ -47,77 +53,79 @@ class AVL {
         return y;
     }
 
-
-    Node* findMin(Node* node) {
-        Node* curr = node;
-        while (curr->left) curr = curr->left;
+    Node* findMin(Node* curr) {
+        while (curr && curr->left) curr = curr->left;
         return curr;
     }
 
-    Node* deleteHelper(Node* node, int key) {
-        if (!node) return node;
+    Node* deleteHelper(Node* curr, int key) {
+        if (!curr) return curr;
 
-        if (key < node->data)
-            node->left = deleteHelper(node->left, key);
-        else if (key > node->data)
-            node->right = deleteHelper(node->right, key);
+        if (key < curr->data)
+            curr->left = deleteHelper(curr->left, key);
+        else if (key > curr->data)
+            curr->right = deleteHelper(curr->right, key);
         else {
             // Node found
-            if (!node->left || !node->right) {
-                Node* temp = node->left ? node->left : node->right;
+            if (!curr->left || !curr->right) {
+                Node* temp = curr->left ? curr->left : curr->right;
                 if (!temp) {
-                    temp = node;
-                    node = nullptr;
+                    temp = curr;
+                    curr = nullptr;
                 } else {
-                    *node = *temp;
+                    *curr = *temp;
                 }
                 delete temp;
             } else {
-                Node* temp = findMin(node->right);
-                node->data = temp->data;
-                node->right = deleteHelper(node->right, temp->data);
+                Node* temp = findMin(curr->right);
+                curr->data = temp->data;
+                curr->right = deleteHelper(curr->right, temp->data);
             }
         }
 
-        if (!node) return node;
+        if (!curr) return curr;
 
-        node->height = 1 + max(getHeight(node->left), getHeight(node->right));
-        return rebalance(node);
+        curr->height = 1 + max(getHeight(curr->left), getHeight(curr->right));
+        return rebalance(curr);
     }
 
-
-    Node* rebalance(Node* node) {
-        int balance = getBalance(node);
+    Node* rebalance(Node* curr) {
+        int balance = getBalance(curr);
 
         // LL
-        if (balance > 1 && getBalance(node->left) >= 0)
-            return rightRotate(node);
+        if (balance > 1 && getBalance(curr->left) >= 0)
+            return rightRotate(curr);
 
         // LR
-        if (balance > 1 && getBalance(node->left) < 0) {
-            node->left = leftRotate(node->left);
-            return rightRotate(node);
+        if (balance > 1 && getBalance(curr->left) < 0) {
+            curr->left = leftRotate(curr->left);
+            return rightRotate(curr);
         }
 
         // RR
-        if (balance < -1 && getBalance(node->right) <= 0)
-            return leftRotate(node);
+        if (balance < -1 && getBalance(curr->right) <= 0)
+            return leftRotate(curr);
 
         // RL
-        if (balance < -1 && getBalance(node->right) > 0) {
-            node->right = rightRotate(node->right);
-            return leftRotate(node);
+        if (balance < -1 && getBalance(curr->right) > 0) {
+            curr->right = rightRotate(curr->right);
+            return leftRotate(curr);
         }
 
-        return node;
+        return curr;
     }
 
 public:
-    AVL() : root(nullptr) {}
+    AVL() {
+        root = nullptr;
+    }
 
-    void remove(int key) { root = deleteHelper(root, key); }
+    void remove(int key) { 
+        root = deleteHelper(root, key); 
+    }
 };
 
 int main() {
-    AVL tree;
+    AVL avl;
+    cout << "AVL tree created successfully!" << endl;
 }

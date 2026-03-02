@@ -33,10 +33,6 @@ void heapSort(vector<int>& arr) {
 int main() {
     vector<int> arr = {4, 10, 3, 5, 1};
 
-    cout << "Original array: ";
-    for (int val : arr) cout << val << " ";
-    cout << endl;
-
     heapSort(arr);
 
     cout << "Sorted array: ";

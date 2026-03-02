@@ -18,19 +18,19 @@ public:
 class AVL {
     Node* root;
 
-    void postorder(Node* node) {
-    if (!node) return;
-    postorder(node->left);
-    postorder(node->right);
-    cout << node->data << " ";
-}
+    void postorder(Node* curr) {
+        if (!curr) return;
+        postorder(curr->left);
+        postorder(curr->right);
+        cout << curr->data << " ";
+    }
 
 public:
     AVL() {
         root = nullptr;
     }
 
-    void dfs_postorder(){ 
+    void dfs(){ 
         cout << "Postorder: "; 
         postorder(root); 
         cout << endl; 
@@ -38,5 +38,6 @@ public:
 };
 
 int main() {
-    AVL tree;
+    AVL avl;
+    avl.dfs(); 
 }

@@ -8,18 +8,23 @@ public:
     Node* left;
     Node* right;
     int height;
-    Node(int val) : data(val), left(nullptr), right(nullptr), height(1) {}
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+        height = 1;
+    }
 };
 
 class AVL {
     Node* root;
 
-    int getHeight(Node* node) {
-        return node ? node->height : 0;
+    int getHeight(Node* curr) {
+        return curr ? curr->height : 0;
     }
 
-    int getBalance(Node* node) {
-        return node ? getHeight(node->left) - getHeight(node->right) : 0;
+    int getBalance(Node* curr) {
+        return curr ? getHeight(curr->left) - getHeight(curr->right) : 0;
     }
 
     Node* rightRotate(Node* y) {
@@ -48,58 +53,57 @@ class AVL {
         return y;
     }
 
-    Node* insert(Node* node, int key) {
-        if (!node) return new Node(key);
+    Node* insert(Node* curr, int key) {
+        if (!curr) return new Node(key);
 
-        if (key < node->data)
-            node->left = insert(node->left, key);
-        else if (key > node->data)
-            node->right = insert(node->right, key);
+        if (key < curr->data)
+            curr->left = insert(curr->left, key);
+        else if (key > curr->data)
+            curr->right = insert(curr->right, key);
         else
-            return node; // duplicates not allowed
+            return curr; // duplicates not allowed
 
-        node->height = 1 + max(getHeight(node->left), getHeight(node->right));
-        return balance(node, key);
+        curr->height = 1 + max(getHeight(curr->left), getHeight(curr->right));
+
+        return balance(curr, key);
     }
 
-    Node* balance(Node* node, int key) {
-        int balance = getBalance(node);
+    Node* balance(Node* curr, int key) {
+        int balanceFactor = getBalance(curr);
 
         // LL
-        if (balance > 1 && key < node->left->data)
-            return rightRotate(node);
+        if (balanceFactor > 1 && key < curr->left->data)
+            return rightRotate(curr);
 
         // RR
-        if (balance < -1 && key > node->right->data)
-            return leftRotate(node);
+        if (balanceFactor < -1 && key > curr->right->data)
+            return leftRotate(curr);
 
         // LR
-        if (balance > 1 && key > node->left->data) {
-            node->left = leftRotate(node->left);
-            return rightRotate(node);
+        if (balanceFactor > 1 && key > curr->left->data) {
+            curr->left = leftRotate(curr->left);
+            return rightRotate(curr);
         }
 
         // RL
-        if (balance < -1 && key < node->right->data) {
-            node->right = rightRotate(node->right);
-            return leftRotate(node);
+        if (balanceFactor < -1 && key < curr->right->data) {
+            curr->right = rightRotate(curr->right);
+            return leftRotate(curr);
         }
 
-        return node;
+        return curr;
     }
 
 public:
-    AVL() : root(nullptr) {}
+    AVL() {
+        root = nullptr;
+    }
 
-    void insert(int key) { root = insert(root, key); }
+    void insert(int key) { 
+        root = insert(root, key); 
+    }
 };
 
 int main() {
-    AVL tree;
-    tree.insert(10);
-    tree.insert(20);
-    tree.insert(30);
-    tree.insert(40);
-    tree.insert(50);
-    tree.insert(25);
+    AVL avl;
 }

@@ -18,23 +18,26 @@ public:
 class AVL {
     Node* root;
 
-    bool searchHelper(Node* node, int key) {
-    if (!node) return false;
-    if (node->data == key) return true;
-    if (key < node->data) return searchHelper(node->left, key);
-    else return searchHelper(node->right, key);
-}
+    bool search(Node* curr, int key) {
+        if (!curr) return false;
+        if (curr->data == key) return true;
+        if (key < curr->data) 
+            return search(curr->left, key);
+        else 
+            return search(curr->right, key);
+    }
 
 public:
     AVL() {
         root = nullptr;
     }
 
-    bool search(int key) {
-    return searchHelper(root, key);
+    bool find(int key) {
+        return search(root, key);
     }
 };
 
 int main() {
-    AVL tree;
+    AVL avl;
+    cout << (avl.find(10) ? "Found" : "Not Found") << endl;
 }

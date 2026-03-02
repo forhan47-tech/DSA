@@ -5,7 +5,9 @@ using namespace std;
 class MinHeap {
     vector<int> heap;
 
-    int parent(int i) { return (i - 1) / 2; }
+    int parent(int i) { 
+        return (i - 1) / 2; 
+    }
 
     void heapifyUp(int i) {
         while (i > 0 && heap[parent(i)] > heap[i]) {

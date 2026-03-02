@@ -18,19 +18,19 @@ public:
 class AVL {
     Node* root;
 
-    void inorder(Node* node) {
-    if (!node) return;
-    inorder(node->left);
-    cout << node->data << " ";
-    inorder(node->right);
-}
+    void inorder(Node* curr) {
+        if (!curr) return;
+        inorder(curr->left);
+        cout << curr->data << " ";
+        inorder(curr->right);
+    }
 
 public:
     AVL() {
         root = nullptr;
     }
 
-    void dfs_inorder() { 
+    void dfs() { 
         cout << "Inorder: "; 
         inorder(root); 
         cout << endl; 
@@ -38,5 +38,6 @@ public:
 };
 
 int main() {
-    AVL tree;
+    AVL avl;
+    avl.dfs(); 
 }

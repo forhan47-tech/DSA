@@ -12,5 +12,5 @@ public:
 };
 
 int main() {
-    MinHeap h;
+    MinHeap mh;
 }

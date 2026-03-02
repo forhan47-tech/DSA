@@ -14,5 +14,5 @@ public:
 };
 
 int main() {
-    MaxHeap h;
+    MaxHeap mh;
 }

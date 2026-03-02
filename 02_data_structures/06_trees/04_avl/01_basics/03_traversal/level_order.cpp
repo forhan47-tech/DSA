@@ -19,18 +19,18 @@ public:
 class AVL {
     Node* root;
 
-    void levelOrder(Node* node) {
-    if (!node) return;
-    queue<Node*> q;
-    q.push(node);
-    while (!q.empty()) {
-        Node* curr = q.front();
-        q.pop();
-        cout << curr->data << " ";
-        if (curr->left) q.push(curr->left);
-        if (curr->right) q.push(curr->right);
+    void levelOrder(Node* curr) {
+        if (!curr) return;
+        queue<Node*> q;
+        q.push(curr);
+        while (!q.empty()) {
+            Node* temp = q.front();
+            q.pop();
+            cout << temp->data << " ";
+            if (temp->left) q.push(temp->left);
+            if (temp->right) q.push(temp->right);
+        }
     }
-}
 
 public:
     AVL() {
@@ -45,5 +45,6 @@ public:
 };
 
 int main() {
-    AVL tree;
+    AVL avl;
+    avl.bfs();
 }

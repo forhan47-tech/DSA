@@ -32,10 +32,6 @@ public:
     }
 };
 
-// Demo
 int main() {
     Trie trie;
-    cout << "Search 'cat': " << trie.search("cat") << endl;
-    cout << "Search 'cap': " << trie.search("cap") << endl;
-    return 0;
 }

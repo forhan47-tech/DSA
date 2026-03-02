@@ -19,12 +19,10 @@ class AVL {
     Node* root;
 
     int heightHelper(Node* root) {
-    if (!root) 
-        return 0;
-
-    return 1 + max(heightHelper(root->left), heightHelper(root->right));
-}
-
+        if (!root) 
+            return 0;
+        return 1 + max(heightHelper(root->left), heightHelper(root->right));
+    }
 
 public:
     AVL() {
@@ -35,6 +33,8 @@ public:
         return heightHelper(root); 
     }
 };
+
 int main() {
     AVL avl;
+    cout << "Height of tree: " << avl.height() << endl;
 }

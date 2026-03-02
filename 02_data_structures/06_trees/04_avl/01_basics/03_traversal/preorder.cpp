@@ -18,20 +18,19 @@ public:
 class AVL {
     Node* root;
 
-    void preorder(Node* node) {
-    if (!node) return;
-    cout << node->data << " ";
-    preorder(node->left);
-    preorder(node->right);
-}
-
+    void preorder(Node* curr) {
+        if (!curr) return;
+        cout << curr->data << " ";
+        preorder(curr->left);
+        preorder(curr->right);
+    }
 
 public:
     AVL() {
         root = nullptr;
     }
 
-    void dfs_preorder() { 
+    void dfs() { 
         cout << "Preorder: "; 
         preorder(root); 
         cout << endl; 
@@ -39,5 +38,6 @@ public:
 };
 
 int main() {
-    AVL tree;
+    AVL avl;
+    avl.dfs();
 }

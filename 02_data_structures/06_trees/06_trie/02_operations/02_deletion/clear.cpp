@@ -6,18 +6,21 @@ class Node {
 public:
     unordered_map<char, Node*> child;
     bool isEnd;
-    Node() { isEnd = false; }
+
+    Node() { 
+        isEnd = false; 
+    }
 };
 
 class Trie {
     Node* root;
 
-    void deleteTrieHelper(Node* node) {
-        if (!node) return;
-        for (auto& pair : node->child) {
-            deleteTrieHelper(pair.second);
+    void freeTree(Node* curr) {
+        if (!curr) return;
+        for (auto& pair : curr->child) {
+            freeTree(pair.second);
         }
-        delete node;
+        delete curr;
     }
 
 public:
@@ -25,9 +28,9 @@ public:
         root = new Node(); 
     }
 
-    void deleteTrie() {
-        deleteTrieHelper(root);
-        root = nullptr; // reset root
+    void clear() {
+        freeTree(root);
+        root = nullptr; 
     }
 };
 

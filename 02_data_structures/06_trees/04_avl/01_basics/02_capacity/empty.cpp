@@ -27,6 +27,7 @@ public:
         return root == nullptr;
     }
 };
+
 int main() {
     AVL avl;
 }

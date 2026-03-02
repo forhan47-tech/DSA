@@ -19,19 +19,15 @@ class AVL {
     Node* root;
 
     int depthHelper(Node* root, int key, int level) {
-    if (!root) 
-        return -1;
+        if (!root) return -1;
 
-    if (root->data == key) 
-        return level;
+        if (root->data == key) return level;
 
-    int leftDepth = depthHelper(root->left, key, level + 1);
+        int leftDepth = depthHelper(root->left, key, level + 1);
+        if (leftDepth != -1) return leftDepth;
 
-    if (leftDepth != -1) 
-        return leftDepth;
-
-    return depthHelper(root->right, key, level + 1);
-}
+        return depthHelper(root->right, key, level + 1);
+    }
 
 public:
     AVL() {

@@ -16,14 +16,14 @@ class Trie {
 private:
     Node* root;
 
-    void dfs(Node* node, string prefix) {
-    if (node->isEnd) {
-        cout << prefix << endl;
+    void dfs(Node* curr, string prefix) {
+        if (curr->isEnd) {
+            cout << prefix << endl;
+        }
+        for (auto& pair : curr->child) {
+            dfs(pair.second, prefix + pair.first);
+        }
     }
-    for (auto& pair : node->child) {
-        dfs(pair.second, prefix + pair.first);
-    }
-}
 
 public:
     Trie() { 
