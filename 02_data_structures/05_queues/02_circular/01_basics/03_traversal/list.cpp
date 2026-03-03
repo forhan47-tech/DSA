@@ -24,6 +24,21 @@ public:
     bool empty() {
         return front == nullptr;
     }
+
+    void display() {
+        if (empty()) {
+            cout << "Queue is empty!\n";
+            return;
+        }
+
+        Node* curr = front;
+        cout << "Queue elements: ";
+        do {
+            cout << curr->data << " ";
+            curr = curr->next;
+        } while (curr != front);
+        cout << endl;
+    }
 };
 
 int main() {

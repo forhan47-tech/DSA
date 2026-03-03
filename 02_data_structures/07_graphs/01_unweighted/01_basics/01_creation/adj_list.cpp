@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <queue>
 using namespace std;
 
 class Graph {
@@ -14,10 +13,6 @@ public:
         this->V = V;
         isDirected = directed;
         adj.resize(V);
-    }
-
-    int size() const { 
-        return V; 
     }
 };
 

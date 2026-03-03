@@ -21,8 +21,17 @@ public:
         adj.resize(V);
     }
 
-    int degree(int u) const { 
-        return adj[u].size(); 
+    int getWeight(int u, int v) const {
+        if (u < 0 || u >= V || v < 0 || v >= V) {
+            cerr << "Invalid vertex index\n";
+            return -1;
+        }
+        for (const auto& edge : adj[u]) {
+            if (edge.dest == v) {
+                return edge.weight;
+            }
+        }
+        return -1;
     }
 };
 

@@ -15,8 +15,8 @@ public:
         adj.resize(V);
     }
 
-
     int countEdges() const {
+        if (V == 0) return 0; 
         int total = 0;
         for (int i = 0; i < V; i++) {
             total += adj[i].size();

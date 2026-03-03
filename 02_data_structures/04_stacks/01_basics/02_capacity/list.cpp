@@ -24,15 +24,14 @@ public:
         return top == nullptr;
     }
 
-    void pop() { 
-        if (empty()) { 
-            cout << "Stack Underflow\n"; 
-            return; 
-        } 
-
-        Node* temp = top; 
-        top = top->next; 
-        delete temp; 
+    int size() {
+        int count = 0;
+        Node* curr = top;
+        while (curr != nullptr) {
+            count++;
+            curr = curr->next;
+        }
+        return count;
     }
 };
 

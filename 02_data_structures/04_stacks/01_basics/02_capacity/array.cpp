@@ -24,6 +24,10 @@ public:
     bool full() {
         return top == cap-1;
     }
+
+    int size() {
+        return top + 1;
+    }
 };
 
 int main() {

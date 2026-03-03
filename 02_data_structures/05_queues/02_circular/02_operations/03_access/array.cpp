@@ -3,7 +3,7 @@ using namespace std;
 
 class CircularQueue {
     int *arr;
-    int front, rear, cap;
+    int front, rear, cap, count;
 
 public:
     CircularQueue(int size) {
@@ -11,6 +11,7 @@ public:
         arr = new int[cap];
         front = 0;
         rear = -1;
+        count = 0;
     }
 
     ~CircularQueue() {
@@ -18,21 +19,15 @@ public:
     }
 
     bool empty() {
-        return rear == -1;
+        return count == 0;
     }
 
-    void dequeue() {
+    int peek() {
         if (empty()) {
-            cout << "Queue Underflow\n";
-            return;
+            cout << "Queue is empty!\n";
+            return -1;
         }
-
-        if (front == rear) {
-            front = 0;
-            rear = -1;
-        } else {
-            front = (front + 1) % cap;
-        }
+        return arr[front];
     }
 };
 

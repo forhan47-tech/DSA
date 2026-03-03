@@ -16,13 +16,17 @@ class WeightedGraph {
 
 public:
     WeightedGraph(int V = 0, bool directed = false) {
-        this->V = V; 
+        this->V = V;
         isDirected = directed;
         adj.resize(V);
     }
 
-    int degree(int u) const { 
-        return adj[u].size(); 
+    int degree(int u) const {
+        if (V == 0 || u < 0 || u >= V) {
+            cerr << "Invalid vertex index\n";
+            return -1;
+        }
+        return adj[u].size();
     }
 };
 

@@ -3,21 +3,20 @@
 #include <list>
 using namespace std;
 
-class KeyValue {
+class Node {
 public:
     int key;
     string value;
 
-    KeyValue(int k, const string& v) { 
+    Node(int k, const string& v) { 
         key = k; 
-        value= v;
+        value = v;
     }
 };
 
 class HashMap {
     int slots;  
-    vector<list<KeyValue>> map;  
-    int count; 
+    vector<list<Node>> map;  
 
     int hashFunction(int key) const {
         return abs(key) % slots;
@@ -27,14 +26,12 @@ public:
     HashMap(int v) {
         slots = v;
         map.resize(v);
-        count = 0;
     }
 
     void clear() {
         for (auto &slot : map) {
-            slot.clear();
+            slot.clear();  
         }
-        count = 0;
     }
 };
 

@@ -15,8 +15,16 @@ public:
         adj.resize(V);
     }
 
-    const list<int>& neighbors(int u) const {
-        return adj[u];
+    vector<int> neighbors(int u) const {
+        if (u < 0 || u >= V) { 
+            cerr << "Invalid vertex index\n";
+            return {};
+        }
+        vector<int> nbr;
+        for (int v : adj[u]) {
+            nbr.push_back(v);
+        }
+        return nbr;
     }
 };
 

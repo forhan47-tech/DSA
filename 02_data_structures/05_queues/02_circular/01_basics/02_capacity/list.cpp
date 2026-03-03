@@ -12,20 +12,31 @@ public:
     }
 };
 
-class SimpleQueue {
+class CircularQueue {
     Node* front;
     Node* rear;
 
 public:
-    SimpleQueue() {
+    CircularQueue() {
         front = rear = nullptr;
     }
 
     bool empty() {
         return front == nullptr;
     }
+
+    int size() {
+        if (empty()) return 0;
+        int count = 0;
+        Node* curr = front;
+        do {
+            count++;
+            curr = curr->next;
+        } while (curr != front);
+        return count;
+    }
 };
 
 int main() {
-    SimpleQueue sq;
+    CircularQueue cq;
 }

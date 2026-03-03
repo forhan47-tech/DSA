@@ -16,9 +16,19 @@ class CircularQueue {
     Node* front;
     Node* rear;
 
+    void clear() {
+        while (!empty()) {
+            dequeue();
+        }
+    }
+
 public:
     CircularQueue() {
         front = rear = nullptr;
+    }
+
+    ~CircularQueue() {
+        clear();
     }
 
     bool empty() {

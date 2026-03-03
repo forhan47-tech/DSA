@@ -4,16 +4,23 @@
 using namespace std;
 
 class HashTable {
-    int slots;                    
-    vector<list<int>> table;          
-    int count;                    
+    int slots;                       
+    vector<list<int>> table;        
 
     int hashFunction(int val) {
         return abs(val) % slots;
     }
 
-    double loadFactor() {
-        return (double)count / slots;
+    int size() const {
+        int total = 0;
+        for (const auto &slot : table) {
+            total += slot.size();
+        }
+        return total;
+    }
+
+    double loadFactor() const {
+        return static_cast<double>(size()) / slots; 
     }
 
     void rehash() {
@@ -23,7 +30,6 @@ class HashTable {
         slots *= 2; 
         table.clear();
         table.resize(slots);
-        count = 0;
 
         for (int i = 0; i < oldSlots; i++) {
             for (int val : oldTable[i]) {
@@ -36,19 +42,24 @@ public:
     HashTable(int v) {
         slots = v;
         table.resize(v);
-        count = 0;
     }
 
     void insert(int val) {
         if (loadFactor() > 0.75) { 
             rehash();
         }
+
         int idx = hashFunction(val);
+        for (int key : table[idx]) {
+            if (key == val) {
+                return; 
+            }
+        }
         table[idx].push_back(val);
-        count++;
     }
 };
 
 int main() {
     HashTable ht(7);
+    return 0;
 }

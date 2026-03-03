@@ -32,8 +32,13 @@ public:
     }
 
     void DFS(int start) const {
+        if (V == 0 || start < 0 || start >= V) {
+            cerr << "Invalid start vertex\n";
+            return;
+        }
         vector<bool> visited(V, false);
         DFSUtil(start, visited);
+        cout << endl;
     }
 };
 

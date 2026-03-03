@@ -16,13 +16,15 @@ public:
     }
 
     void removeVertex(int u) {
-        if (u >= V) {
+        if (V == 0 || u < 0 || u >= V) {
+            cerr << "Invalid vertex index\n";
             return;
         }
 
         for (int i = 0; i < V; i++) {
             adj[i].remove(u);
         }
+
         adj[u].clear();
     }
 };

@@ -16,10 +16,11 @@ public:
     }
 
     void removeEdge(int u, int v) {
-         if (u >= V || v >= V) {
+        if (V == 0 || u < 0 || u >= V || v < 0 || v >= V) {
+            cerr << "Invalid vertex index\n";
             return;
-         }
-         
+        }
+        
         adj[u].remove(v);
         if (!isDirected) {
             adj[v].remove(u);

@@ -5,8 +5,7 @@ using namespace std;
 
 class HashTable {
     int slots;                     
-    vector<list<int>> table;          
-    int count;                    
+    vector<list<int>> table;                              
 
     int hashFunction(int val) {
         return abs(val) % slots;
@@ -16,11 +15,15 @@ public:
     HashTable(int v) {
         slots = v;
         table.resize(v);
-        count = 0;
     }
 
     bool empty() const {
-        return count == 0;
+        for (const auto &slot : table) {
+            if (!slot.empty()) {
+                return false;
+            }
+        }
+        return true;
     }
 };
 

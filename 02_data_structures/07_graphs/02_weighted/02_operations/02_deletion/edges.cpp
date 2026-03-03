@@ -22,6 +22,10 @@ public:
     }
 
     void removeEdge(int u, int v) {
+        if (u < 0 || u >= V || v < 0 || v >= V) {
+            cerr << "Invalid vertex index\n";
+            return;
+        }
         adj[u].remove_if([&](const Edge& e){ return e.dest == v; });
         if (!isDirected) {
             adj[v].remove_if([&](const Edge& e){ return e.dest == u; });

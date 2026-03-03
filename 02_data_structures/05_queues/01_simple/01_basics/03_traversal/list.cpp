@@ -30,11 +30,11 @@ public:
             cout << "Queue is empty!\n";
             return;
         }
-        Node* temp = front;
+        Node* curr = front;
         cout << "Queue elements: ";
-        while (temp != nullptr) {
-            cout << temp->data << " ";
-            temp = temp->next;
+        while (curr != nullptr) {
+            cout << curr->data << " ";
+            curr = curr->next;
         }
         cout << endl;
     }

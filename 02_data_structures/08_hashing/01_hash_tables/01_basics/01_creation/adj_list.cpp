@@ -4,11 +4,11 @@
 using namespace std;
 
 class HashTable {
-    int slots;                   
-    vector<list<int>> table;                           
+    int slots;                      // number of buckets
+    vector<list<int>> table;        // each bucket is a list
 
     int hashFunction(int val) {
-        return abs(val) % slots;
+        return abs(val) % slots;    // simple modulo hash
     }
 
 public:

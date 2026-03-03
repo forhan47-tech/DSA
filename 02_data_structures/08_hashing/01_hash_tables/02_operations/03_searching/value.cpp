@@ -17,14 +17,14 @@ public:
         table.resize(v);
     }
 
-    bool search(int value) {
-        int idx = hashFunction(value);
-        for (int x : table[idx]) {
-            if (x == value) {
-                return true;
+    bool search(int val) {
+        int idx = hashFunction(val);
+        for (int key : table[idx]) {
+            if (key == val) {
+                return true;   
             }
         }
-        return false;
+        return false;         
     }
 };
 

@@ -22,7 +22,11 @@ public:
     }
 
     bool full() { 
-        return rear == cap-1; 
+        return rear == cap - 1; 
+    }
+
+    int size() { 
+        return rear - front + 1; 
     }
 };
 

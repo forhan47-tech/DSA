@@ -16,7 +16,12 @@ public:
         adj.resize(V);
     }
 
-     void BFS(int start) const {
+    void BFS(int start) const {
+        if (V == 0 || start < 0 || start >= V) { 
+            cerr << "Invalid start vertex\n"; 
+            return;
+        }
+        
         vector<bool> visited(V, false);
         queue<int> q;
         visited[start] = true;

@@ -1,0 +1,70 @@
+#include <iostream>
+#include <vector>
+#include <list>
+using namespace std;
+
+class Node {
+public:
+    int key;
+    string value;
+
+    Node(int k, const string& v) { 
+        key = k; 
+        value = v;
+    }
+};
+
+class HashMap {
+    int slots;  
+    vector<list<Node>> map;  
+
+    int hashFunction(int key) const {
+        return abs(key) % slots;
+    }
+
+    int size() const {
+        int total = 0;
+        for (const auto &bucket : map) {
+            total += bucket.size();
+        }
+        return total;
+    }
+
+    double loadFactor() const { 
+        return static_cast<double>(size()) / slots; 
+    }
+
+    void rehash() { 
+        int oldSlots = slots; 
+        vector<list<Node>> oldMap = map; 
+
+        slots *= 2;
+        map.clear(); 
+        map.resize(slots); 
+
+        for (int i = 0; i < oldSlots; i++) { 
+            for (auto &node : oldMap[i]) { 
+                insert(node.key, node.value);  
+            } 
+        } 
+    }
+
+public:
+    HashMap(int v) {
+        slots = v;
+        map.resize(v);
+    }
+
+    void insert(int key, const string& value) {
+        if (loadFactor() > 0.75) { 
+            rehash(); 
+        }
+
+        int idx = hashFunction(key);
+        map[idx].push_back(Node(key, value));
+    }
+};
+
+int main() {
+    HashMap hm(7);
+}

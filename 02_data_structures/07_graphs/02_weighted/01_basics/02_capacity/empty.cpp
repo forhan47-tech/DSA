@@ -21,7 +21,7 @@ public:
         adj.resize(V);
     }
 
-     bool empty() const { 
+    bool empty() const { 
         return V == 0; 
     }
 };

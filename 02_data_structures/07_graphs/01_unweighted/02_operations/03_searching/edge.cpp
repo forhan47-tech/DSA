@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
 using namespace std;
 
 class Graph {
@@ -16,6 +17,10 @@ public:
     }
 
     bool hasEdge(int u, int v) const {
+        if (u < 0 || u >= V || v < 0 || v >= V) {
+            cerr << "Invalid vertex index\n";
+            return false;
+        }
         return find(adj[u].begin(), adj[u].end(), v) != adj[u].end();
     }
 };

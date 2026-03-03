@@ -16,6 +16,10 @@ public:
     }
 
     int degree(int u) const { 
+        if (V == 0 || u < 0 || u >= V) {
+            cerr << "Invalid vertex index\n";
+            return -1;
+        }
         return adj[u].size(); 
     }
 };

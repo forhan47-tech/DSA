@@ -24,8 +24,7 @@ public:
     void clear() { 
         for (int i = 0; i < V; i++) {
             adj[i].clear();
-        } 
-        cout << "Graph cleared: all edges removed.\n"; 
+        }
     }
 };
 

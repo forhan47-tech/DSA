@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <queue>
 using namespace std;
 
 class Graph {
@@ -17,8 +16,8 @@ public:
     }
 
     void addEdge(int u, int v) {
-        if (u >= V || v >= V) {
-            cout << "Invalid vertex index\n";
+        if (u < 0 || u >= V || v < 0 || v >= V) {
+            cerr << "Invalid vertex index\n";
             return;
         }
         

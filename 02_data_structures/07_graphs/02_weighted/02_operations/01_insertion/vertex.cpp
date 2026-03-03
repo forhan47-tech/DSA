@@ -21,7 +21,7 @@ public:
         adj.resize(V);
     }
 
-     int addVertex() {
+    int addVertex() {
         adj.push_back(list<Edge>());
         return V++;
     }
