@@ -41,4 +41,5 @@ public:
 
 int main() {
     GeneralTree tr;
+    cout << tr.countChild(10) << endl;
 }
