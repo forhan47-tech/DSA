@@ -7,8 +7,6 @@ int main() {
     arr[0] = 10;   // initialization
     arr[1] = 20;
 
-    // access
-    cout << "arr[0]: " << arr[0] << endl;
+    cout << "arr[0]: " << arr[0] << endl;   // access
     cout << "arr[1]: " << arr[1] << endl;
-    return 0;
 }
