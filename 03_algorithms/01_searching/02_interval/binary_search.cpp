@@ -4,6 +4,7 @@ using namespace std;
 
 int binarySearch(const vector<int>& v, int target) {
     int low = 0, high = v.size()-1;
+
     while (low <= high) {
         int mid = low+(high-low)/2;
         if (v[mid] == target) return mid;
