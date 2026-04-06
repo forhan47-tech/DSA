@@ -3,27 +3,29 @@
 #include <algorithm>
 using namespace std;
 
-void countingSort(vector<int>& arr) {
-    int maxVal = *max_element(arr.begin(), arr.end());
-    int minVal = *min_element(arr.begin(), arr.end());
-    int range = maxVal - minVal + 1;
+void countingSort(vector<int>& v) {
+    int maxVal = *max_element(v.begin(), v.end());
+    int minVal = *min_element(v.begin(), v.end());
+    int range = maxVal-minVal+1;
 
-    vector<int> count(range, 0), output(arr.size());
+    vector<int> count(range, 0), output(v.size());
 
-    for (int num : arr) count[num - minVal]++; // Count occurrences
+    for (int num : v) count[num-minVal]++; // Count occurrences
 
-    for (int i = 1; i < range; i++) count[i] += count[i-1];  // Cumulative count
+    for (int i = 1; i < range; i++) count[i] += count[i-1]; // Cumulative count
 
-    for (int i = arr.size()-1; i >= 0; i--) {
-        output[count[arr[i] - minVal] - 1] = arr[i];
-        count[arr[i] - minVal]--;
+    for (int i = v.size()-1; i >= 0; i--) {
+        output[count[v[i]-minVal]-1] = v[i];
+        count[v[i]-minVal]--;
     }
 
-    arr = output;
+    v = output;
 }
 
 int main() {
-    vector<int> arr = {4, 2, 2, 8, 3, 3, 1};
-    countingSort(arr);
-    for (int x : arr) cout << x << " "; 
+    vector<int> v = {4, 2, 2, 8, 3, 3, 1};
+    countingSort(v);
+
+    cout << "Sorted array: ";
+    for (int x : v) cout << x << " "; 
 }

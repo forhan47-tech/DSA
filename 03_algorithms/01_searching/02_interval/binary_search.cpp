@@ -1,23 +1,23 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int binarySearch(int arr[], int n, int target) {
-    int low = 0, high = n-1;
+int binarySearch(const vector<int>& v, int target) {
+    int low = 0, high = v.size()-1;
     while (low <= high) {
-        int mid = low + (high - low) / 2; // avoid overflow
-        if (arr[mid] == target) return mid;
-        else if (arr[mid] < target) low = mid + 1;
-        else high = mid - 1;
+        int mid = low+(high-low)/2;
+        if (v[mid] == target) return mid;
+        else if (v[mid] < target) low = mid+1;
+        else high = mid-1;
     }
-    return -1; // not found
+    return -1;
 }
 
 int main() {
-    int arr[] = {2, 3, 4, 5, 8, 10, 12};
-    int n = sizeof(arr)/sizeof(arr[0]);
+    vector<int> v = {2, 3, 4, 5, 8, 10};
     int target = 8;
+    int index = binarySearch(v, target);
 
-    int index = binarySearch(arr, n, target);
     if (index != -1) cout << "Found at index " << index;
     else cout << "Not found";
 }

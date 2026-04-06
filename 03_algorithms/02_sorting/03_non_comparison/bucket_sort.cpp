@@ -3,11 +3,11 @@
 #include <algorithm>
 using namespace std;
 
-void bucketSort(vector<float>& arr) {
-    int n = arr.size();
+void bucketSort(vector<float>& v) {
+    int n = v.size();
     vector<vector<float>> buckets(n);
 
-    for (float num : arr) {
+    for (float num : v) {
         int index = n * num;
         buckets[index].push_back(num); // Distribute elements into buckets
     }
@@ -19,13 +19,15 @@ void bucketSort(vector<float>& arr) {
     int idx = 0;
     for (int i = 0; i < n; i++) {
         for (float num : buckets[i]) {
-            arr[idx++] = num;   // Concatenate buckets
+            v[idx++] = num;   // Concatenate buckets
         }
     }
 }
 
 int main() {
-    vector<float> arr = {0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.51};
-    bucketSort(arr);
-    for (float x : arr) cout << x << " "; 
+    vector<float> v = {0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.51};
+    bucketSort(v);
+
+    cout << "Sorted array: ";
+    for (float x : v) cout << x << " "; 
 }

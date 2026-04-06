@@ -1,22 +1,25 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void insertionSort(int arr[], int n) {
+void insertionSort(vector<int>& v) {
+    int n = v.size();
     for (int i = 1; i < n; i++) {
-        int key = arr[i];
+        int key = v[i];
         int j = i - 1;
-       
-        while (j >= 0 && arr[j] > key) {
-            arr[j+1] = arr[j];  // shift larger elements to the right
+
+        while (j >= 0 && v[j] > key) {
+            v[j+1] = v[j]; // Shift elements one position ahead
             j--;
         }
-        arr[j+1] = key; // insert key
+        v[j+1] = key;
     }
 }
 
 int main() {
-    int arr[] = {5, 3, 8, 4, 2};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    insertionSort(arr, n);
-    for (int x : arr) cout << x << " "; 
+    vector<int> v = {5, 3, 8, 4, 2};
+    insertionSort(v);
+
+    cout << "Sorted array: ";
+    for (int x : v) cout << x << " "; 
 }
