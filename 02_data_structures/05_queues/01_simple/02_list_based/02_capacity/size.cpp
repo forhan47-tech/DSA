@@ -21,10 +21,6 @@ public:
         front = rear = nullptr;
     }
 
-    bool empty() {
-        return front == nullptr;
-    }
-
     int size() {
         int count = 0;
         Node* curr = front;

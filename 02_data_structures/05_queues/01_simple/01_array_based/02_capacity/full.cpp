@@ -17,16 +17,8 @@ public:
         delete[] arr;
     }
 
-    bool empty() { 
-        return front > rear; 
-    }
-
     bool full() { 
         return rear == cap - 1; 
-    }
-
-    int size() { 
-        return rear - front + 1; 
     }
 };
 

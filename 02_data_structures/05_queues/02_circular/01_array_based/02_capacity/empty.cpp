@@ -21,14 +21,6 @@ public:
     bool empty() {
         return count == 0;
     }
-
-    bool full() {
-        return count == cap;
-    }
-
-    int size() {
-        return count;
-    }
 };
 
 int main() {
