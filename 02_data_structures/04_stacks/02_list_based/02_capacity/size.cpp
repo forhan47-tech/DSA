@@ -20,10 +20,6 @@ public:
         top = nullptr;
     }
 
-    bool empty() {
-        return top == nullptr;
-    }
-
     int size() {
         int count = 0;
         Node* curr = top;
