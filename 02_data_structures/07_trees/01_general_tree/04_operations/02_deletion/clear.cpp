@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    vector<Node*> child;
+
+    Node(int val) {
+        data = val;
+    }
+};
+
+class GeneralTree {
+    Node* root;
+
+    void freeSubTree(Node* curr) { 
+        if (!curr) return;
+        
+        for (Node* cld : curr->child) { 
+            freeSubTree(cld);
+        } 
+        delete curr; 
+    }
+
+public:
+    GeneralTree() {
+        root = nullptr;
+    }
+
+    ~GeneralTree() { 
+        clear(); 
+    }
+
+    void clear() {
+        freeSubTree(root);
+        root = nullptr;
+    }
+};
+
+int main() {
+    GeneralTree tr;
+}

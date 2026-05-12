@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <list>
+using namespace std;
+
+class Node {
+public:
+    int key;
+    string value;
+
+    Node(int k, const string& v) { 
+        key = k; 
+        value = v;
+    }
+};
+
+class HashMap {
+    int slots;  
+    vector<list<Node>> map;  
+
+    int hashFunction(int key) const {
+        return abs(key) % slots;
+    }
+
+public:
+    HashMap(int v) {
+        slots = v;
+        map.resize(v);
+    }
+
+    string search(int key) const {
+        int idx = hashFunction(key);
+        for (auto &node : map[idx]) {
+            if (node.key == key) {
+                return node.value;
+            }
+        }
+        return "";
+    }
+};
+
+int main() {
+    HashMap hm(7);
+    cout << "Search for key 5: " << hm.search(5) << endl;
+    return 0;
+}
