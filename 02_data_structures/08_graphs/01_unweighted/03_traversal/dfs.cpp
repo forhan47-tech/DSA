@@ -6,8 +6,8 @@ using namespace std;
 class Graph {
     int V;                  
     bool isDirected;        
-    vector<list<int>> adj; 
-    
+    vector<list<int>> adj;  
+
     void DFSUtil(int u, vector<bool>& visited) const {
         visited[u] = true;
         cout << u << " ";
@@ -25,18 +25,28 @@ public:
         adj.resize(V);
     }
 
-    void DFS(int start) const {
-        if (V == 0 || start < 0 || start >= V) {
-            cerr << "Invalid start vertex\n";
+    void DFS(int src) const {
+        if (V == 0) {
+            cerr << "Graph is empty\n";
             return;
         }
-        
+
         vector<bool> visited(V, false);
-        DFSUtil(start, visited);
+
+        if (src >= 0 && src < V) {
+            DFSUtil(src, visited);
+        } else {
+            cerr << "Invalid source vertex\n";
+            return;
+        }
+
         cout << endl;
     }
 };
 
 int main() {
-    Graph g;
+    Graph g(6);
+
+    cout << "DFS traversal:\n";
+    g.DFS(0);
 }

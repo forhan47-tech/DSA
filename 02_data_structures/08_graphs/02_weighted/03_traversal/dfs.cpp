@@ -10,9 +10,9 @@ public:
 };
 
 class WeightedGraph {
-    int V;
-    bool isDirected;
-    vector<list<Edge>> adj;
+    int V;                  
+    bool isDirected;        
+    vector<list<Edge>> adj;  
 
     void DFSUtil(int u, vector<bool>& visited) const {
         visited[u] = true;
@@ -26,22 +26,33 @@ class WeightedGraph {
 
 public:
     WeightedGraph(int V = 0, bool directed = false) {
-        this->V = V; 
+        this->V = V;
         isDirected = directed;
         adj.resize(V);
     }
 
-    void DFS(int start) const {
-        if (V == 0 || start < 0 || start >= V) {
-            cerr << "Invalid start vertex\n";
+    void DFS(int src) const {
+        if (V == 0) {
+            cerr << "Graph is empty\n";
             return;
         }
+
         vector<bool> visited(V, false);
-        DFSUtil(start, visited);
+
+        if (src >= 0 && src < V) {
+            DFSUtil(src, visited);
+        } else {
+            cerr << "Invalid source vertex\n";
+            return;
+        }
+
         cout << endl;
     }
 };
 
 int main() {
-    WeightedGraph wg;
+    WeightedGraph g(6);
+
+    cout << "DFS traversal:\n";
+    g.DFS(0);
 }

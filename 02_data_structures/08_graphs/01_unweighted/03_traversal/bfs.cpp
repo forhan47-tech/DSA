@@ -9,26 +9,13 @@ class Graph {
     bool isDirected;        
     vector<list<int>> adj;  
 
-public:
-    Graph(int V = 0, bool directed = false) {
-        this->V = V;
-        isDirected = directed;
-        adj.resize(V);
-    }
-
-    void BFS(int start) const {
-        if (V == 0 || start < 0 || start >= V) { 
-            cerr << "Invalid start vertex\n"; 
-            return;
-        }
-        
-        vector<bool> visited(V, false);
+    void BFSUtil(int src, vector<bool>& visited) const {
         queue<int> q;
-        visited[start] = true;
-        q.push(start);
+        visited[src] = true;
+        q.push(src);
 
         while (!q.empty()) {
-            int u = q.front(); 
+            int u = q.front();
             q.pop();
             cout << u << " ";
             for (int v : adj[u]) {
@@ -39,8 +26,36 @@ public:
             }
         }
     }
+
+public:
+    Graph(int V = 0, bool directed = false) {
+        this->V = V;
+        isDirected = directed;
+        adj.resize(V);
+    }
+
+    void BFS(int src) const {
+        if (V == 0) {
+            cerr << "Graph is empty\n";
+            return;
+        }
+
+        vector<bool> visited(V, false);
+
+        if (src >= 0 && src < V) {
+            BFSUtil(src, visited);
+        } else {
+            cerr << "Invalid source vertex\n";
+            return;
+        }
+
+        cout << endl;
+    }
 };
 
 int main() {
-    Graph g;
+    Graph g(6);
+
+    cout << "BFS traversal:\n";
+    g.BFS(0);
 }

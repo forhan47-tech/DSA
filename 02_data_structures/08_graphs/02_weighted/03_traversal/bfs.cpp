@@ -11,30 +11,17 @@ public:
 };
 
 class WeightedGraph {
-    int V;
-    bool isDirected;
-    vector<list<Edge>> adj;
+    int V;                  
+    bool isDirected;        
+    vector<list<Edge>> adj;  
 
-public:
-    WeightedGraph(int V = 0, bool directed = false) {
-        this->V = V; 
-        isDirected = directed;
-        adj.resize(V);
-    }
-
-    void BFS(int start) const {
-        if (V == 0 || start < 0 || start >= V) {
-            cerr << "Invalid start vertex\n";
-            return;
-        }
-
-        vector<bool> visited(V, false);
+    void BFSUtil(int src, vector<bool>& visited) const {
         queue<int> q;
-        visited[start] = true;
-        q.push(start);
+        visited[src] = true;
+        q.push(src);
 
         while (!q.empty()) {
-            int u = q.front(); 
+            int u = q.front();
             q.pop();
             cout << u << " ";
             for (auto &edge : adj[u]) {
@@ -44,10 +31,37 @@ public:
                 }
             }
         }
+    }
+
+public:
+    WeightedGraph(int V = 0, bool directed = false) {
+        this->V = V;
+        isDirected = directed;
+        adj.resize(V);
+    }
+
+    void BFS(int src) const {
+        if (V == 0) {
+            cerr << "Graph is empty\n";
+            return;
+        }
+
+        vector<bool> visited(V, false);
+
+        if (src >= 0 && src < V) {
+            BFSUtil(src, visited);
+        } else {
+            cerr << "Invalid source vertex\n";
+            return;
+        }
+
         cout << endl;
     }
 };
 
 int main() {
-    WeightedGraph wg;
+    WeightedGraph g(6);
+    
+    cout << "BFS traversal:\n";
+    g.BFS(0);
 }
