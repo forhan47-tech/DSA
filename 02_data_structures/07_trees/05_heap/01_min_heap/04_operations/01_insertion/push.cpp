@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class MinHeap {
+    vector<int> heap;
+
+    int parent(int i) { 
+        return (i - 1) / 2; 
+    }
+
+    void heapifyUp(int i) {
+        while (i > 0 && heap[parent(i)] > heap[i]) {
+            swap(heap[i], heap[parent(i)]);
+            i = parent(i);
+        }
+    }
+
+public:
+    void push(int val) {
+        heap.push_back(val);
+        heapifyUp(heap.size() - 1);
+    }
+};
+
+int main() {
+    MinHeap mh;
+    mh.push(5);
+    mh.push(3);
+    mh.push(8);
+}

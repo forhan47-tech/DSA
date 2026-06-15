@@ -1,0 +1,7 @@
+par,prt,pnt
+chd,chl,kid
+nbr, ngh
+sib,sbl
+vtx,vrt
+edg,egs
+nod,nd
