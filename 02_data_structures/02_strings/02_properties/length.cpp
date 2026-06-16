@@ -4,6 +4,6 @@ using namespace std;
 
 int main() {
     string s = "Hello";
-    cout << "Size: " << s.size() << endl; // using size()
-    cout << "Length: " << s.length() << endl;  // using length()
+    cout << "Size: " << s.size() << endl; 
+    cout << "Length: " << s.length() << endl;
 }
