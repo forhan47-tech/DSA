@@ -6,8 +6,6 @@ int main() {
     string s = "HelloWorld";
 
     cout << "Reverse traversal: ";
-    for(int i = s.size() - 1; i >= 0; --i) {
-        cout << s[i] << " ";  
-    }
-    cout << endl;
+    for(char c : string(s.rbegin(), s.rend())) 
+        cout << c << " ";  
 }

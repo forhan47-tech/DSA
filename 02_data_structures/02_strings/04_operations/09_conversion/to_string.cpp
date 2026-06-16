@@ -3,11 +3,7 @@
 using namespace std;
 
 int main() {
-    int x = 999;
-
-    // Convert integer to string
+    int x = 42;
     string s = to_string(x);
-    cout << "String: " << s << endl;
-
-    return 0;
+    cout << "String: " << s << endl; 
 }

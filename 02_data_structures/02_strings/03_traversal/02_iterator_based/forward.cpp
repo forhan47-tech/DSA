@@ -3,9 +3,11 @@
 using namespace std;
 
 int main() {
-    string s = "Hello";
-    
+    string s = "HelloWorld";
+
     cout << "Forward traversal: ";
-    for(auto it = s.begin(); it != s.end(); ++it)
-        cout << *it << " ";
+    for(auto it = s.begin(); it != s.end(); ++it) {
+        cout << *it << " ";  
+    }
+    cout << endl;
 }

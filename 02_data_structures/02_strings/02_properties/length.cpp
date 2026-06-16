@@ -3,8 +3,7 @@
 using namespace std;
 
 int main() {
-    string s = "Hello World";
-    cout << "Length: " << s.length() << endl; 
-    cout << "Size: " << s.size() << endl;   
-    return 0;
+    string s = "Hello";
+    cout << "Size: " << s.size() << endl; // using size()
+    cout << "Length: " << s.length() << endl;  // using length()
 }

@@ -3,14 +3,10 @@
 using namespace std;
 
 int main() {
-    string s;
-    cout << "Is empty? " << (s.empty() ? "Yes" : "No") << endl;
+    string s = "Hello";
 
-    s.reserve(100); // Pre-allocate space
-    cout << "Reserved capacity: " << s.capacity() << endl;
+    cout << "Capacity: " << s.capacity() << endl;
 
-    s = "Hello World";
-    s.shrink_to_fit();
-    cout << "Capacity after shrink: " << s.capacity() << endl;
-    return 0;
+    s += "WorldUniverse";
+    cout << "New Capacity: " << s.capacity() << endl;
 }

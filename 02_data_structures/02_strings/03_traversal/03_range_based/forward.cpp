@@ -3,10 +3,8 @@
 using namespace std;
 
 int main() {
-    string str = "Traversal";
+    string str = "HelloWorld";
 
-    for (char ch : str) {
-        cout << ch << " ";
-    }
-    cout << endl;
+    cout << "Forward traversal: ";
+    for(char c : str) cout << c << " ";
 }
