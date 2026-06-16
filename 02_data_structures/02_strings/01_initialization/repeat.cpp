@@ -3,7 +3,6 @@
 using namespace std;
 
 int main() {
-    string str = "Hello"; 
-    cout << str << endl;
-    return 0;
+    string s(5, '*'); 
+    cout << s << endl; 
 }

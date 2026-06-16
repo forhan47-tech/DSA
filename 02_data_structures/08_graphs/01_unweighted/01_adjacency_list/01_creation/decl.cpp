@@ -6,7 +6,7 @@ using namespace std;
 class Graph {
     int V;                  
     bool isDirected;        
-    vector<list<int>> adj;  
+    vector<list<int>> adj;
 
 public:
     Graph(int V = 0, bool directed = false) {
