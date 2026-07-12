@@ -4,22 +4,21 @@
 using namespace std;
 
 void countingSort(vector<int>& v) {
-    int maxVal = *max_element(v.begin(), v.end());
-    int minVal = *min_element(v.begin(), v.end());
-    int range = maxVal-minVal+1;
+    int max = *max_element(v.begin(), v.end());
+    int min = *min_element(v.begin(), v.end());
+    int range = max-min+1;
 
-    vector<int> count(range, 0), output(v.size());
+    vector<int> count(range, 0), res(v.size());
 
-    for (int num : v) count[num-minVal]++; // Count occurrences
+    for (int num : v) count[num-min]++; // Count occurrences
 
     for (int i = 1; i < range; i++) count[i] += count[i-1]; // Cumulative count
 
     for (int i = v.size()-1; i >= 0; i--) {
-        output[count[v[i]-minVal]-1] = v[i];
-        count[v[i]-minVal]--;
+        res[--count[v[i]-min]] = v[i];
     }
 
-    v = output;
+    v = res;
 }
 
 int main() {

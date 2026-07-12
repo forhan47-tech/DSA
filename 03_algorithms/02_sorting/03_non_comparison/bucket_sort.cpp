@@ -1,19 +1,19 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <list>
 using namespace std;
 
 void bucketSort(vector<float>& v) {
     int n = v.size();
-    vector<vector<float>> buckets(n);
+    vector<list<float>> buckets(n);
 
     for (float num : v) {
-        int index = n * num;
-        buckets[index].push_back(num); // Distribute elements into buckets
+        int idx = n * num;
+        buckets[idx].push_back(num);  // Distribute elements into buckets
     }
 
     for (int i = 0; i < n; i++) {
-        sort(buckets[i].begin(), buckets[i].end());  // Sort each bucket
+        buckets[i].sort();  // Sort each bucket
     }
 
     int idx = 0;

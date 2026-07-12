@@ -5,25 +5,32 @@ using namespace std;
 
 void countingSort(vector<int>& v, int exp) {
     int n = v.size();
-    vector<int> output(n);
+    vector<int> res(n);
     int count[10] = {0};
 
-    for (int i = 0; i < n; i++) count[(v[i]/exp)%10]++;  // Count occurrences of digits
+    for (int i = 0; i < n; i++) {
+        int digit = (v[i]/exp)%10;
+        count[digit]++; // Count occurrences of digit
+    }
 
-    for (int i = 1; i < 10; i++) count[i] += count[i-1];  // Cumulative count
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i-1]; // Cumulative count to determine positions
+    }
 
     for (int i = n-1; i >= 0; i--) {
         int digit = (v[i]/exp)%10;
-        output[count[digit]-1] = v[i];
-        count[digit]--;
+        res[--count[digit]] = v[i];
     }
 
-    v = output;
+    v = res;
 }
 
 void radixSort(vector<int>& v) {
-    int maxVal = *max_element(v.begin(), v.end());
-    for (int exp = 1; maxVal/exp > 0; exp *= 10) {
+    if (v.empty()) return;
+    
+    int lar = *max_element(v.begin(), v.end());
+
+    for (int exp = 1; lar/exp > 0; exp *= 10) {
         countingSort(v, exp);
     }
 }
