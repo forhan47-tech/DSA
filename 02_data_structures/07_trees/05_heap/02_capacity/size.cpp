@@ -11,7 +11,9 @@ class Heap {
     }
 
 public:
-    Heap(bool flag = false) { isMinHeap = flag; }
+    Heap(bool flag = false) { 
+        isMinHeap = flag; 
+    }
 
     int size() { 
         return v.size(); 

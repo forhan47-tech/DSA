@@ -11,7 +11,9 @@ class Heap {
     }
 
 public:
-    Heap(bool flag = false) { isMinHeap = flag; }
+    Heap(bool flag = false) { 
+        isMinHeap = flag; 
+    }
 
     bool isEmpty() { 
         return v.empty(); 

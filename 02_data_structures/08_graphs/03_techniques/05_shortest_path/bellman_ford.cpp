@@ -50,7 +50,7 @@ public:
 };
 
 int main() {
-    Graph g(true); // directed graph
+    Graph g;
 
     g.addEdge(0,1,-1);
     g.addEdge(0,2,4);
