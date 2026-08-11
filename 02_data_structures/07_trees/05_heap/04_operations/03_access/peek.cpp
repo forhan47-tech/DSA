@@ -16,7 +16,7 @@ public:
     }
 
     int peek() {
-        if (v.empty()) return -1;
+        if (v.empty()) throw runtime_error("Heap is empty");
         return v[0];
     }
 };
