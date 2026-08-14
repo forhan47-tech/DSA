@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_map>
+#include <string>
 using namespace std;
 
 class Node {
@@ -7,9 +8,7 @@ public:
     unordered_map<char, Node*> child;
     bool isEnd;
 
-    Node() { 
-        isEnd = false; 
-    }
+    Node() : isEnd(false) {}
 };
 
 class Trie {
@@ -17,10 +16,11 @@ class Trie {
 
     void freeTree(Node* curr) {
         if (!curr) return;
-        for (auto& pair : curr->child) {
-            freeTree(pair.second);
+        for (auto& [ch, next] : curr->child) {
+            freeTree(next);
+            delete next;
         }
-        delete curr;
+        curr->child.clear();
     }
 
 public:
@@ -28,9 +28,14 @@ public:
         root = new Node(); 
     }
 
+    ~Trie() { 
+        clear();
+        delete root;
+    }
+
     void clear() {
         freeTree(root);
-        root = nullptr; 
+        root->isEnd = false;
     }
 };
 

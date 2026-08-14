@@ -1,6 +1,5 @@
 #include <iostream>
 #include <unordered_map>
-#include <string>
 using namespace std;
 
 class Node {
@@ -8,9 +7,7 @@ public:
     unordered_map<char, Node*> child;
     bool isEnd;
 
-    Node() {
-        isEnd = false;
-    }
+    Node() : isEnd(false) {}
 };
 
 class Trie {
@@ -25,15 +22,14 @@ public:
     bool startsWith(const string& prefix) { 
         Node* curr = root; 
         for (char ch : prefix) { 
-            if (!curr->child[ch]) 
-                return false; 
+            if (!curr->child.count(ch)) return false;
             curr = curr->child[ch]; 
         } 
-        return true; 
+        return true;
     }
 };
 
 int main() {
     Trie t;
-    t.startsWith("cat");
+    cout << "Starts with(cat): " << (t.startsWith("cat") ? "Yes" : "No") << endl;
 }

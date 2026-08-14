@@ -13,32 +13,28 @@ public:
 };
 
 class Trie {
-private:
     Node* root;
 
-    void dfs(Node* curr, string res) {
-        if (!curr) return;
-
-        if (curr->isEnd) {
-            cout << res << endl;
-        }
-
+    int findNode(Node* curr) {
+        if (!curr) return 0;
+        int count = 1;
         for (auto& [ch, next] : curr->child) {
-            dfs(next, res + ch);
+            count += findNode(next);
         }
+        return count;
     }
 
 public:
-    Trie() {
-        root = new Node(); 
+    Trie() { 
+        root = new Node();
     }
 
-    void print() {
-        dfs(root, "");
+    int countNode() {
+        return findNode(root);
     }
 };
 
 int main() {
     Trie t;
-    t.print();
+    cout << "Total nodes: " << t.countNode() << endl;
 }

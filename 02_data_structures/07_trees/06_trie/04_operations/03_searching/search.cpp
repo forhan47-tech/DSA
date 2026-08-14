@@ -8,13 +8,10 @@ public:
     unordered_map<char, Node*> child;
     bool isEnd;
 
-    Node() {
-        isEnd = false;
-    }
+    Node() : isEnd(false) {}
 };
 
 class Trie {
-private:
     Node* root;
 
 public:
@@ -25,7 +22,7 @@ public:
     bool search(const string& word) {
         Node* curr = root;
         for (char ch : word) {
-            if (!curr->child[ch]) return false;
+            if (!curr->child.count(ch)) return false; // safe existence check
             curr = curr->child[ch];
         }
         return curr->isEnd;
@@ -34,5 +31,5 @@ public:
 
 int main() {
     Trie t;
-    t.search("cat");
+    cout << "Search(cat): " << (t.search("cat") ? "Found" : "Not Found") << endl;
 }

@@ -15,26 +15,26 @@ public:
 class Trie {
     Node* root;
 
-    int sizeHelper(Node* curr) {
+    int countWords(Node* curr) {
         if (!curr) return 0;
         int count = curr->isEnd ? 1 : 0;
-        for (auto& [ch, child] : curr->child) {
-            count += sizeHelper(child);
+        for (auto& [ch, next] : curr->child) {
+            count += countWords(next);
         }
         return count;
     }
 
 public:
     Trie() { 
-        root = new Node(); 
+        root = new Node();
     }
 
     int size() {
-        return sizeHelper(root);
+        return countWords(root);
     }
 };
 
 int main() {
     Trie t;
-    cout << "Size of trie: " << t.size() << endl;
+    cout << "Trie size: " << t.size() << endl;
 }

@@ -13,32 +13,19 @@ public:
 };
 
 class Trie {
-private:
     Node* root;
-
-    void dfs(Node* curr, string res) {
-        if (!curr) return;
-
-        if (curr->isEnd) {
-            cout << res << endl;
-        }
-
-        for (auto& [ch, next] : curr->child) {
-            dfs(next, res + ch);
-        }
-    }
 
 public:
     Trie() {
         root = new Node(); 
     }
 
-    void print() {
-        dfs(root, "");
+    bool empty() {
+        return root->child.empty() && !root->isEnd;
     }
 };
 
 int main() {
     Trie t;
-    t.print();
+    cout << "Is Empty? " << (t.empty() ? "Yes" : "No") << endl;
 }
