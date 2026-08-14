@@ -19,9 +19,9 @@ public:
         root = new Node(); 
     }
 
-    bool startsWith(const string& prefix) { 
+    bool startsWith(const string& pfx) { 
         Node* curr = root; 
-        for (char ch : prefix) { 
+        for (char ch : pfx) { 
             if (!curr->child.count(ch)) return false;
             curr = curr->child[ch]; 
         } 

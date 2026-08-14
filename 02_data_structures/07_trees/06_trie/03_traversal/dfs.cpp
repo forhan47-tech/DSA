@@ -16,7 +16,7 @@ class Trie {
 private:
     Node* root;
 
-    void dfs(Node* curr, string res) {
+    void dfs(Node* curr, string res = "") {
         if (!curr) return;
 
         if (curr->isEnd) {
@@ -34,7 +34,7 @@ public:
     }
 
     void print() {
-        dfs(root, "");
+        dfs(root);
     }
 };
 
